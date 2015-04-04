@@ -1,0 +1,25 @@
+{
+  "name": "TouchYourPass",
+  "version": "0.1",
+  "description": "Don't let someone else to host your own passwords",
+  "keywords": [
+    "passwords"
+  ],
+  "authors": [
+    "Olivier Perez"
+  ],
+  "license": "Apache-2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jsSHA": "Caligatio/jsSHA#~1.6.0",
+    "requirejs": "~2.1.17",
+    "gibberish-aes": "mdp/gibberish-aes"
+  }
+}
