@@ -18,7 +18,7 @@
                 <input type="hidden" id="user" name="user" value="{$user->id}">
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">{__('Entry', 'Load entries')}</button>
+                    <button type="submit" class="btn btn-default">{__('Entry', 'Load entries')}</button>
                 </div>
             </form>
         </div>
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Add an entry -->
-            <div id="add-entry" class="list-group-item row" style="display:none">
+            <div id="add-entry" class="well row" style="display:none">
                 <div class="col-md-12">
                     <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry" method="POST"
                           data-module="key">

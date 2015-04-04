@@ -12,6 +12,11 @@ main.container {
     box-shadow: 1px 1px 4px 0 #603404;
 }
 
+.well {
+    background: #926B42;
+    border-color: #603404;
+}
+
 /* Forms */
 textarea {
     resize: both;
@@ -33,7 +38,7 @@ textarea.noResize {
 
 /* Lists */
 
-.list-group-item p{
+.list-group-item p {
     overflow: hidden;
     text-overflow: ellipsis;
 }
