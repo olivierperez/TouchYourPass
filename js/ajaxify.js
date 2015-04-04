@@ -12,53 +12,69 @@ require(['jsSHA'], function (jsSHA) {
             event.preventDefault();
             event.stopPropagation();
 
-            var form = $(this);
-            var method = form.attr('method');
-            var url = form.attr('action');
+            var form = this;
 
-            // Retreive data
-            var data = {};
-            for (var x in this.elements) {
-                var element = this.elements[x];
-                if (element instanceof HTMLElement && element.name != '') {
-                    if (element.type == 'password') {
-                        var shaObj = new jsSHA(element.value + salt, 'TEXT');
-                        data[element.name] = shaObj.getHash('SHA-512', 'HEX');
-                    } else {
-                        data[element.name] = encodeURIComponent(element.value);
-                    }
-                }
-            }
-
-            if (method.toLowerCase() == 'post') {
-                var formData = new FormData();
-                formData.append('data', JSON.stringify(data));
-            } else {
-                url += '&' + $.param(data);
-            }
-
-            // FormData
-            /**/
-
-            // Send data
-            var xhr = new XMLHttpRequest();
-            xhr.open(method, url, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        require([form.attr('data-module')], function(module) {
-                            module.onSuccess(JSON.parse(xhr.response));
-                        });
-                    } else {
-                        require([form.attr('data-module')], function(module) {
-                            module.onFail(xhr.status, xhr.response);
-                        });
-
-                    }
-                }
-            };
-            xhr.send(formData);
+            // Load the module
+            var moduleName = $(form).attr('data-module');
+            require([moduleName], function (module) {
+                submitForm(module, form);
+            });
         });
     });
+
+    var submitForm = function (module, form) {
+        var method = $(form).attr('method');
+        var url = $(form).attr('action');
+
+        // Retreive data
+        var values = extractedFieldValues(form, module);
+
+        // FormData
+        if (method.toLowerCase() == 'post') {
+            var formData = new FormData();
+            if (module.handleFormData) { // Module fills the formData
+                module.handleFormData(formData, values);
+            } else {
+                formData.append('data', JSON.stringify(values));
+            }
+        } else {
+            url += '&' + $.param(values);
+        }
+
+        // Send data
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                     module.onSuccess(JSON.parse(xhr.response));
+                } else {
+                     module.onFail(xhr.status, xhr.response);
+                }
+            }
+        };
+        xhr.send(formData);
+    };
+
+    var extractedFieldValues = function (form, module) {
+        var values = {};
+        for (var x in form.elements) {
+            var element = form.elements[x];
+            if (element instanceof HTMLElement && element.name != '') {
+
+                if (module.handleElement) { // Module handles the element
+                    values[element.name] = module.handleElement(element);
+                } else { // If module doesnt handle, hash passwords and encode others
+                    if (element.type == 'password') {
+                        var shaObj = new jsSHA(element.value + salt, 'TEXT');
+                        values[element.name] = shaObj.getHash('SHA-512', 'HEX');
+                    } else {
+                        values[element.name] = encodeURIComponent(element.value);
+                    }
+                }
+            }
+        }
+        return values;
+    };
 
 });

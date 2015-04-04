@@ -27,6 +27,42 @@
         <div class="col-md-6 col-md-offset-3">
             <div id="entries" class="list-group">
             </div>
+
+            <!-- Add an entry -->
+            <div id="add-entry" class="list-group-item row" style="display:none">
+                <div class="col-md-12">
+                    <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry" method="POST"
+                          data-module="key">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="login" class="input-group-addon">{__('Generic', 'Login')}</label>
+                                <input type="text" class="form-control" id="login" name="login">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="url" class="input-group-addon">{__('Generic', 'Web site')}</label>
+                                <input type="text" class="form-control" id="url" name="url">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="add_passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
+                                <input type="password" class="form-control" id="add_passphrase" name="passphrase">
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">{__('Generic', 'Add')}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Model -->
             <div id="entry-model" class="list-group-item row" style="display:none">
                 <h4 class="list-group-item-heading col-md-5">...</h4>
 

@@ -13,4 +13,8 @@ abstract class Repository {
         return $this->pdo->prepare($sql);
     }
 
+    protected function lastInsertId() {
+        return $this->pdo->lastInsertId();
+    }
+
 }

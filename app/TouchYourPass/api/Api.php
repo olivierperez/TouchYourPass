@@ -23,11 +23,21 @@ abstract class Api {
         return new ApiError(400, 'Bad Request', null);
     }
 
+    /**
+     * The action requires to be authenticated to be executed.
+     *
+     * @return ApiError
+     */
     protected function unauthorized() {
         http_response_code(401);
         return new ApiError(401, 'Unauthorized', null);
     }
 
+    /**
+     * Action is simply forbidden.
+     *
+     * @return ApiError
+     */
     protected function forbidden() {
         http_response_code(403);
         return new ApiError(403, 'Forbidden', null);

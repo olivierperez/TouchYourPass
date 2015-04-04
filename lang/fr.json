@@ -6,7 +6,10 @@
   "Generic": {
     "Name":"Nom",
     "Passphrase":"Phrase de passe",
-    "Log-in": "Connection"
+    "Log-in": "Connection",
+    "Login": "Login",
+    "Web site": "Site web",
+    "Add": "Ajouter"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"

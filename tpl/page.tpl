@@ -31,6 +31,7 @@
                 gibberishaes: "{'/bower_components/gibberish-aes/dist/gibberish-aes-1.0.0'|resource}",
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 keystore: "{'/js/keystore'|resource}",
+                key: "{'/js/key'|resource}",
                 login: "{'/js/login'|resource}"
             }
         });

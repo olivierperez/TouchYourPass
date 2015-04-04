@@ -15,4 +15,18 @@ class EntryService {
         return $this->entryRepository->findAllByUserId($user->id);
     }
 
+    public function save($data) {
+        $id = $this->entryRepository->save($_SESSION['user']->id, $data);
+
+        if ($id) {
+            $entry = new \stdClass();
+            $entry->id = $id;
+            $entry->user_id = $_SESSION['user']->id;
+            $entry->content = $data;
+            return $entry;
+        } else {
+            return false;
+        }
+    }
+
 }

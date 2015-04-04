@@ -14,8 +14,18 @@ class EntryApi extends Api {
     }
 
     function onPost() {
-        // TODO: Implement onPost() method.
-        return $this->notImplemented();
+        if (empty($_SESSION['user'])) {
+            return $this->unauthorized();
+        }
+
+        $data = $_POST['data'];
+        $entry = $this->entryService->save($data);
+
+        if ($entry !== false) {
+            return $entry;
+        } else {
+            return $this->forbidden();
+        }
     }
 
     function onGet() {
