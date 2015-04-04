@@ -1,0 +1,14 @@
+{
+  "Title": {
+    "TouchYourPass": "TouchYourPass",
+    "Keystore": "Trousseau de clés"
+  },
+  "Generic": {
+    "Name":"Nom",
+    "Passphrase":"Phrase de passe",
+    "Log-in": "Connection"
+  },
+  "Entry": {
+    "Load entries": "Charger les enregistrements"
+  }
+}

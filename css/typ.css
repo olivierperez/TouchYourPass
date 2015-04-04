@@ -1,0 +1,46 @@
+body {
+    background-color: #926B42;
+}
+
+nav.navbar {
+    margin-bottom: 0;
+    box-shadow: 1px 1px 4px 0 #603404;
+}
+
+main.container {
+    background-color: #C2A687;
+    box-shadow: 1px 1px 4px 0 #603404;
+}
+
+/* Forms */
+textarea {
+    resize: both;
+}
+
+textarea.vert {
+    resize: vertical;
+}
+
+textarea.noResize {
+    resize: none;
+}
+
+.form-control:focus {
+    border-color: #603404;
+    outline: 0 none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(96, 52, 4, 0.6);
+}
+
+/* Lists */
+
+.list-group-item p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Panels */
+
+.panel-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
