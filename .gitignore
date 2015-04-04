@@ -1,0 +1,15 @@
+# App
+.htaccess
+.htpasswd
+vendor
+cache/
+tpl_c/
+inc/conf.php
+
+# IDE
+.idea/
+*.iml
+
+# Tools
+composer.phar
+bower_components/
