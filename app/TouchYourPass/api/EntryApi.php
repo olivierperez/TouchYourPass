@@ -41,4 +41,15 @@ class EntryApi extends Api {
             return $this->forbidden();
         }
     }
+
+    function onDelete() {
+        $id = $_GET['id'];
+        $deleted = $this->entryService->deleteById($id);
+
+        if ($deleted) {
+            return array('deleted' => $id);
+        } else {
+            return $this->forbidden();
+        }
+    }
 }

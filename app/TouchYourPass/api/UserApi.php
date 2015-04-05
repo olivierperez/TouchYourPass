@@ -21,7 +21,7 @@ class UserApi extends Api {
         $authenticated = $this->userService->authenticate($data->name, $data->passphrase);
 
         if ($authenticated) {
-            return array('id' => $authenticated->id);
+            return array('name' => $authenticated->name);
         } else {
             return $this->forbidden();
         }
@@ -29,5 +29,9 @@ class UserApi extends Api {
 
     function onGet() {
         return $this->badRequest();
+    }
+
+    function onDelete() {
+        return $this->notImplemented();
     }
 }

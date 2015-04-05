@@ -62,14 +62,17 @@
 
             <!-- Model -->
             <div id="entry-model" class="list-group-item row" style="display:none">
-                <h4 class="list-group-item-heading col-md-5">...</h4>
+                <h4 class="list-group-item-heading col-md-5 login">...</h4>
 
                 <div class="col-md-6">
-                    <a href="..." target="_blank">...</a>
+                    <a href="..." class="url" target="_blank">...</a>
                 </div>
-                <span class="badge col-md-1">0</span>
+                <span class="badge col-md-1 id">0</span>
 
-                <p class="list-group-item-text col-md-12">...</p>
+                <p class="list-group-item-text col-md-11 passphrase">...</p>
+                <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </a>
             </div>
         </div>
     </div>

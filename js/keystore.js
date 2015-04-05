@@ -1,6 +1,6 @@
 'use strict';
 
-define('keystore', ['gibberishaes'], function (GibberishAES) {
+define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify) {
 
     var onSuccess = function (response) {
         var passphraseField = $('#passphrase');
@@ -47,16 +47,27 @@ define('keystore', ['gibberishaes'], function (GibberishAES) {
     var displayEntry = function (id, entry) {
         var entries = $('#entries');
         var block = $('#entry-model').clone();
+        block.attr('id', '');
 
         var url = /^https?:\/\//.test(entry.url) ? entry.url : 'http://' + entry.url;
 
-        block.find('h4').html(entry.login);
-        block.find('a').attr('href', url).html(url);
-        block.find('span').html(id);
-        block.find('p').html(entry.passphrase);
+        // Bind values
+        block.find('h4.login').html(entry.login);
+        block.find('a.url').attr('href', url).html(url);
+        block.find('span.id').html(id);
+        block.find('p.passphrase').html(entry.passphrase);
 
+        // Bind delete button
+        var a_delete = block.find('a.delete');
+        a_delete.attr('href', a_delete.attr('href') + id);
+        ajaxify.ajaxifyLink(a_delete, function (response) {
+            a_delete.closest('.list-group-item').remove();
+        }, function (status, response) {
+        });
+
+        // Add new block to HTML
         entries.append(block);
-        block.attr('style', '');
+        block.attr('style', null);
     };
 
     return {

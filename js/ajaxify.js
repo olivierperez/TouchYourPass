@@ -1,12 +1,12 @@
 'use strict';
 
-require(['jsSHA'], function (jsSHA) {
+define('ajaxify', ['jsSHA'], function (jsSHA) {
     var salt = 'djDzy4PCTEcLcmd6GAkykPthkkgmpJJ8H75WCPyJNXV4pKj2';
 
     // Handle forms submition
     //-----------------------
 
-    $(document).ready(function () {
+    var ajaxifyForms = function() {
         $('form').on('submit', function (event) {
             // Stop submitting form
             event.preventDefault();
@@ -20,7 +20,7 @@ require(['jsSHA'], function (jsSHA) {
                 submitForm(module, form);
             });
         });
-    });
+    };
 
     var submitForm = function (module, form) {
         var method = $(form).attr('method');
@@ -47,9 +47,9 @@ require(['jsSHA'], function (jsSHA) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status < 300) {
-                     module.onSuccess(JSON.parse(xhr.response));
+                    module.onSuccess(JSON.parse(xhr.response));
                 } else {
-                     module.onFail(xhr.status, xhr.response);
+                    module.onFail(xhr.status, xhr.response);
                 }
             }
         };
@@ -77,4 +77,37 @@ require(['jsSHA'], function (jsSHA) {
         return values;
     };
 
+    var ajaxifyLink = function (element, onSuccess, onFail) {
+        console.log('ajaxifyLink', element);
+
+        element.on('click', function (event) {
+            // Stop submitting form
+            event.preventDefault();
+            event.stopPropagation();
+            var a = $(this);
+
+            var url = a.attr('href');
+            var method = a.attr('data-method');
+            console.log('method', method);
+
+            // Send data
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        onSuccess(JSON.parse(xhr.response));
+                    } else {
+                        onFail(xhr.status, xhr.response);
+                    }
+                }
+            };
+            xhr.send(null);
+        });
+    };
+
+    return {
+        ajaxifyLink: ajaxifyLink,
+        ajaxifyForms: ajaxifyForms
+    };
 });

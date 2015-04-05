@@ -32,6 +32,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $result = $api->onGet();
         break;
+    case 'DELETE':
+        $result = $api->onDelete();
+        break;
 }
 
 echo json_encode($result);

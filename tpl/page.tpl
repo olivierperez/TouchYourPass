@@ -32,8 +32,15 @@
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
-                login: "{'/js/login'|resource}"
+                login: "{'/js/login'|resource}",
+                ajaxify: "{'/js/ajaxify'|resource}"
             }
+        });
+
+        require(['ajaxify'], function (ajaxify) {
+            $(document).ready(function () {
+                ajaxify.ajaxifyForms();
+            });
         });
     </script>
     {block name=head}{/block}

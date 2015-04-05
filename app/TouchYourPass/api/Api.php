@@ -18,6 +18,13 @@ abstract class Api {
      */
     abstract function onGet();
 
+    /**
+     * Handle DELETE requests.
+     *
+     * @return object The object to return as JSON
+     */
+    abstract function onDelete();
+
     protected function badRequest() {
         http_response_code(400);
         return new ApiError(400, 'Bad Request', null);

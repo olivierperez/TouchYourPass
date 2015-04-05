@@ -28,4 +28,14 @@ class EntryService {
         }
     }
 
+    public function deleteById($id) {
+        $entry = $this->entryRepository->findById($id);
+
+        if ($entry && $entry->user_id === $_SESSION['user']->id) {
+            return $this->entryRepository->deleteById($id);
+        } else {
+            return false;
+        }
+    }
+
 }

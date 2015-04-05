@@ -23,4 +23,18 @@ class EntryRepository extends Repository {
         return $id;
     }
 
+    public function findById($id) {
+        $stmt = $this->prepare('SELECT user_id FROM `entry` WHERE id = :id');
+        $stmt->execute(array('id' => $id));
+        $entry = $stmt->fetch();
+        $stmt->closeCursor();
+
+        return $entry;
+    }
+
+    public function deleteById($id) {
+        $stmt = $this->prepare('DELETE FROM `entry` WHERE id = :id');
+        return $stmt->execute(array('id' => $id));
+    }
+
 }
