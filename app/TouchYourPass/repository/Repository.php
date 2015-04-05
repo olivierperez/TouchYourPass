@@ -17,4 +17,8 @@ abstract class Repository {
         return $this->pdo->lastInsertId();
     }
 
+    protected function prefix($table) {
+        return DB_TABLE_PREFIX . $table;
+    }
+
 }

@@ -8,7 +8,7 @@ class UserRepository extends Repository {
     }
 
     public function findByName($name) {
-        $stmt = $this->prepare('SELECT * FROM `user` WHERE name = :name');
+        $stmt = $this->prepare('SELECT * FROM `' . $this->prefix('user') . '` WHERE name = :name');
         $stmt->execute(array('name' => $name));
         $user = $stmt->fetchObject();
         $stmt->closeCursor();
@@ -17,7 +17,7 @@ class UserRepository extends Repository {
     }
 
     public function findById($userId) {
-        $stmt = $this->prepare('SELECT * FROM `user` WHERE id = :id');
+        $stmt = $this->prepare('SELECT * FROM `' . $this->prefix('user') . '` WHERE id = :id');
         $stmt->execute(array('id' => $userId));
         $user = $stmt->fetchObject();
         $stmt->closeCursor();
