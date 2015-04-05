@@ -8,7 +8,7 @@ class EntryRepository extends Repository {
     }
 
     public function findAllByUserId($id) {
-        $stmt = $this->prepare('SELECT * FROM `entry` WHERE user_id = :userId');
+        $stmt = $this->prepare('SELECT id, content FROM `entry` WHERE user_id = :userId');
         $stmt->execute(array('userId' => $id));
         $entries = $stmt->fetchAll();
 

@@ -11,8 +11,8 @@ class EntryService {
         $this->entryRepository = $entryRepository;
     }
 
-    public function findAllByUser($user) {
-        return $this->entryRepository->findAllByUserId($user->id);
+    public function findByConnectedUser() {
+        return $this->entryRepository->findAllByUserId($_SESSION['user']->id);
     }
 
     public function save($data) {
@@ -21,7 +21,6 @@ class EntryService {
         if ($id) {
             $entry = new \stdClass();
             $entry->id = $id;
-            $entry->user_id = $_SESSION['user']->id;
             $entry->content = $data;
             return $entry;
         } else {

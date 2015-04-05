@@ -15,8 +15,6 @@
             </div>
 
             <form class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry" method="GET" data-module="keystore">
-                <input type="hidden" id="user" name="user" value="{$user->id}">
-
                 <div class="text-center">
                     <button type="submit" class="btn btn-default">{__('Entry', 'Load entries')}</button>
                 </div>

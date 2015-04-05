@@ -29,14 +29,16 @@ class EntryApi extends Api {
     }
 
     function onGet() {
-        $userId = $_GET['user'];
-        if (!$this->userService->authorizedToSeeUser($userId)) {
-            return $this->forbidden();
+        if (empty($_SESSION['user'])) {
+            return $this->unauthorized();
         }
 
-        $user = $this->userService->findById($userId);
-        $entries = $this->entryService->findAllByUser($user);
+        $entries = $this->entryService->findByConnectedUser();
 
-        return $entries;
+        if ($entries !== false) {
+            return $entries;
+        } else {
+            return $this->forbidden();
+        }
     }
 }
