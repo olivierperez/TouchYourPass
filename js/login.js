@@ -4,7 +4,7 @@ define('login', function () {
 
     var onSuccess = function (response) {
         console.log(response);
-        document.location = './index.php/' + response.id;
+        document.location = './keystore';
     };
 
     var onFail = function (status, response) {
