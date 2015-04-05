@@ -14,11 +14,9 @@
                 </div>
             </div>
 
-            <form class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry" method="GET" data-module="keystore">
-                <div class="text-center">
-                    <button type="submit" class="btn btn-default">{__('Entry', 'Load entries')}</button>
-                </div>
-            </form>
+            <div class="text-center">
+                <a href="{$SERVER_URL}/api.php?s=entry" data-module="keystore" class="ajax btn btn-default">{__('Entry', 'Load entries')}</a>
+            </div>
         </div>
     </div>
     <div class="row">

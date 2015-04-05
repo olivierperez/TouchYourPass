@@ -40,6 +40,7 @@
         require(['ajaxify'], function (ajaxify) {
             $(document).ready(function () {
                 ajaxify.ajaxifyForms();
+                ajaxify.ajaxifyLinks();
             });
         });
     </script>

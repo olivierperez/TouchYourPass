@@ -23,7 +23,7 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
             }
         }
 
-        if (decryptionSuccess || response.length == 0) {
+        if (decryptionSuccess || response.length === 0) {
             $('#add-entry').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
         }
@@ -45,9 +45,7 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
     };
 
     var displayEntry = function (id, entry) {
-        var entries = $('#entries');
-        var block = $('#entry-model').clone();
-        block.attr('id', '');
+        var block = $('#entry-model').clone().attr('id', '');
 
         var url = /^https?:\/\//.test(entry.url) ? entry.url : 'http://' + entry.url;
 
@@ -66,7 +64,7 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
         });
 
         // Add new block to HTML
-        entries.append(block);
+        $('#entries').append(block);
         block.attr('style', null);
     };
 

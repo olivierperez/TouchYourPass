@@ -6,7 +6,7 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
     // Handle forms submition
     //-----------------------
 
-    var ajaxifyForms = function() {
+    var ajaxifyForms = function () {
         $('form').on('submit', function (event) {
             // Stop submitting form
             event.preventDefault();
@@ -77,6 +77,36 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
         return values;
     };
 
+    var ajaxifyLinks = function () {
+        $('a.ajax').on('click', function (event) {
+            // Stop submitting form
+            event.preventDefault();
+            event.stopPropagation();
+
+            var link = $(this);
+            var moduleName = link.attr('data-module');
+            var url = link.attr('href');
+            var method = link.attr('data-method') || 'GET';
+
+            require([moduleName], function (module) {
+
+                // Send data
+                var xhr = new XMLHttpRequest();
+                xhr.open(method, url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            module.onSuccess(JSON.parse(xhr.response));
+                        } else {
+                            module.onFail(xhr.status, xhr.response);
+                        }
+                    }
+                };
+                xhr.send(null);
+            });
+        });
+    };
+
     var ajaxifyLink = function (element, onSuccess, onFail) {
         element.on('click', function (event) {
             // Stop submitting form
@@ -105,6 +135,7 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
 
     return {
         ajaxifyLink: ajaxifyLink,
+        ajaxifyLinks: ajaxifyLinks,
         ajaxifyForms: ajaxifyForms
     };
 });
