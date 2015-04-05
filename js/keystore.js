@@ -16,7 +16,6 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
                 var entry = decrypt(encrypted);
 
                 displayEntry(r.id, entry);
-                passphraseField.closest('.form-group').addClass('hidden');
                 decryptionSuccess = true;
             } catch (e) {
                 console.error('Error found', e);
@@ -24,8 +23,9 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
             }
         }
 
-        if (decryptionSuccess) {
+        if (decryptionSuccess || response.length == 0) {
             $('#add-entry').fadeIn('slow');
+            passphraseField.closest('.form-group').addClass('hidden');
         }
 
     };

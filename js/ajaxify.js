@@ -78,8 +78,6 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
     };
 
     var ajaxifyLink = function (element, onSuccess, onFail) {
-        console.log('ajaxifyLink', element);
-
         element.on('click', function (event) {
             // Stop submitting form
             event.preventDefault();
@@ -88,7 +86,6 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
 
             var url = a.attr('href');
             var method = a.attr('data-method');
-            console.log('method', method);
 
             // Send data
             var xhr = new XMLHttpRequest();
