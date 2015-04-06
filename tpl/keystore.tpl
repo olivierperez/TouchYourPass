@@ -15,7 +15,8 @@
             </div>
 
             <div class="text-center">
-                <a href="{$SERVER_URL}/api.php?s=entry" data-module="keystore" class="ajax btn btn-default">{__('Entry', 'Load entries')}</a>
+                <a href="{$SERVER_URL}/api.php?s=entry" data-module="keystore"
+                   class="ajax btn btn-default">{__('Entry', 'Load entries')}</a>
             </div>
         </div>
     </div>
@@ -27,8 +28,8 @@
             <!-- Add an entry -->
             <div id="add-entry" class="well row" style="display:none">
                 <div class="col-md-12">
-                    <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry" method="POST"
-                          data-module="key">
+                    <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry"
+                          method="POST" data-module="key">
 
                         <div class="form-group">
                             <div class="input-group">
@@ -46,7 +47,8 @@
 
                         <div class="form-group">
                             <div class="input-group">
-                                <label for="add_passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
+                                <label for="add_passphrase"
+                                       class="input-group-addon">{__('Generic', 'Passphrase')}</label>
                                 <input type="password" class="form-control" id="add_passphrase" name="passphrase">
                             </div>
                         </div>
@@ -60,17 +62,25 @@
 
             <!-- Model -->
             <div id="entry-model" class="list-group-item row" style="display:none">
-                <h4 class="list-group-item-heading col-md-5 login">...</h4>
-
-                <div class="col-md-6">
-                    <a href="..." class="url" target="_blank">...</a>
+                <div class="col-md-1">
+                    <button class="btn btn-default copy" title="{__('Generic', 'Copy')}">
+                        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                        <span class="sr-only">Copy</span>
+                    </button>
                 </div>
-                <span class="badge col-md-1 id">0</span>
+                <div class="col-md-11">
+                    <h4 class="list-group-item-heading col-md-5 login">...</h4>
 
-                <p class="list-group-item-text col-md-11 passphrase">...</p>
-                <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </a>
+                    <div class="col-md-6">
+                        <a href="..." class="url" target="_blank">...</a>
+                    </div>
+                    <span class="badge col-md-1 id">0</span>
+
+                    <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete" title="{__('Generic', 'Delete')}">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="sr-only">Delete</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

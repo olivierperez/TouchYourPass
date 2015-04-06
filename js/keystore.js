@@ -1,6 +1,6 @@
 'use strict';
 
-define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify) {
+define('keystore', ['gibberishaes', 'ajaxify', 'zeroclipboard'], function (GibberishAES, ajaxify, zeroclipboard) {
 
     var onSuccess = function (response) {
         var passphraseField = $('#passphrase');
@@ -53,14 +53,28 @@ define('keystore', ['gibberishaes', 'ajaxify'], function (GibberishAES, ajaxify)
         block.find('h4.login').html(entry.login);
         block.find('a.url').attr('href', url).html(url);
         block.find('span.id').html(id);
-        block.find('p.passphrase').html(entry.passphrase);
 
         // Bind delete button
-        var a_delete = block.find('a.delete');
-        a_delete.attr('href', a_delete.attr('href') + id);
-        ajaxify.ajaxifyLink(a_delete, function (response) {
-            a_delete.closest('.list-group-item').remove();
+        var deleteLink = block.find('a.delete');
+        deleteLink.attr('href', deleteLink.attr('href') + id);
+        ajaxify.ajaxifyLink(deleteLink, function (response) {
+            deleteLink.closest('.list-group-item').remove();
         }, function (status, response) {
+            console.log('ajaxify failed', deleteLink, status, response);
+        });
+
+        // Bind copy button
+        var copyBtn = block.find('button.copy');
+        copyBtn.attr('data-clipboard-text', entry.passphrase);
+
+        var zeroClient = new zeroclipboard(copyBtn);
+        zeroClient.on({
+            'ready': function () {
+                console.log('zeroclipboard ready');
+            },
+            'error': function (event) {
+                console.log('zeroclipboard error', event.name, event);
+            }
         });
 
         // Add new block to HTML

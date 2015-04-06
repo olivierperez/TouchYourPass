@@ -9,7 +9,9 @@
     "Log-in": "Connection",
     "Login": "Login",
     "Web site": "Site web",
-    "Add": "Ajouter"
+    "Add": "Ajouter",
+    "Copy": "Copier",
+    "Delete": "Supprimer"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"
