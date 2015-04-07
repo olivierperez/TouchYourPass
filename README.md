@@ -19,8 +19,37 @@
 ### How to create the database
 Execute the sql script `install/install.sql` in your database schema.
 
-### Configure the tool
+### Configure TouchYourPass
 There is few fields to configure in `inc/conf.php`.
 
-## Contributors
+## Contribute
+
+### Dependency tools
+
+* `composer` fo PHP dependencies
+* `bower` for JS dependencies
+
+### First: On your side
+
+1. Create an account on [https://git.framasoft.org](https://git.framasoft.org)
+1. Create a fork : [Create the fork](https://git.framasoft.org/olivierperez/TouchYourPass/fork/new)
+1. Create a branch `feature/[Description]` from the `develop` branch
+    * Where `[Description]` is a short description of what you will do
+1. Make changes and commit on your branch
+1. Push the branch on your own fork
+1. Ask for a merge request to `develop`
+
+### Next: On our side
+
+1. Someone will read your work
+    * Try to organize your commits in order to simplify the reading
+1. If the reader need to ask you questions or to comment your work, he will do it on the merge request
+1. If the merge request seams to be good, he could merge your branch to `develop` branch
+
+### Fix after reading
+
+The reading of the merge requests can lead to some fixes.
+You can make those fixes on your branch, it will update the merge request too.
+
+### Colors
 [Color palette - http://paletton.com/#uid=20B0r0khCij9Qooeblwn8gsuBc5](http://paletton.com/#uid=20B0r0khCij9Qooeblwn8gsuBc5)
