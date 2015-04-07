@@ -20,7 +20,7 @@
   "dependencies": {
     "jsSHA": "Caligatio/jsSHA#~1.6.0",
     "requirejs": "~2.1.17",
-    "gibberish-aes": "mdp/gibberish-aes",
-    "zeroclipboard": "~2.2.0"
+    "zeroclipboard": "~2.2.0",
+    "sjcl": "bitwiseshiftleft/sjcl#~1.0.2"
   }
 }

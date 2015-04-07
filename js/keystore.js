@@ -1,6 +1,6 @@
 'use strict';
 
-define('keystore', ['gibberishaes', 'ajaxify', 'zeroclipboard'], function (GibberishAES, ajaxify, zeroclipboard) {
+define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify, zeroclipboard) {
 
     var onSuccess = function (response) {
         var passphraseField = $('#passphrase');
@@ -36,7 +36,8 @@ define('keystore', ['gibberishaes', 'ajaxify', 'zeroclipboard'], function (Gibbe
 
     var decrypt = function (encrypted) {
         var passphrase = $('#passphrase').val();
-        var decrypted = GibberishAES.dec(encrypted, passphrase);
+        var decrypted = sjcl.decrypt(passphrase, encrypted);
+        console.log('decrypted', 'decrypted');
         return JSON.parse(decrypted);
     };
 

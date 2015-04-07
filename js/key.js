@@ -1,6 +1,6 @@
 'use strict';
 
-define('key', ['gibberishaes', 'keystore'], function (GibberishAES, keystore) {
+define('key', ['sjcl', 'keystore'], function (sjcl, keystore) {
 
     var onSuccess = function (response) {
         var entry = keystore.decrypt(response.content);
@@ -21,7 +21,8 @@ define('key', ['gibberishaes', 'keystore'], function (GibberishAES, keystore) {
         handleFormData: function (formData, values) {
             var passphrase = $('#passphrase').val();
             var json = JSON.stringify(values);
-            var enc = GibberishAES.enc(json, passphrase);
+            var enc = sjcl.encrypt(passphrase, json);
+            console.log('enc', enc);
             enc = enc.replace('\r\n', '').replace('\n', '');
             formData.append('data', enc);
         }

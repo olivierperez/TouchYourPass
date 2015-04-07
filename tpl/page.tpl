@@ -28,7 +28,7 @@
     <script type="text/javascript">
         require.config({
             paths: {
-                gibberishaes: "{'/bower_components/gibberish-aes/dist/gibberish-aes-1.0.0'|resource}",
+                sjcl: "{'/bower_components/sjcl/sjcl'|resource}",
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 zeroclipboard: "{'/bower_components/zeroclipboard/dist/ZeroClipboard'|resource}",
                 keystore: "{'/js/keystore'|resource}",
