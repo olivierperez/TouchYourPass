@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <label for="name" class="input-group-addon">{__('Generic', 'Name')}</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" autofocus>
                         </div>
                     </div>
 

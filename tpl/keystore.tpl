@@ -10,7 +10,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <label for="passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
-                    <input type="password" class="form-control" id="passphrase" name="passphrase">
+                    <input type="password" class="form-control" id="passphrase" name="passphrase" autofocus>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                     </button>
                 </div>
                 <div class="col-md-11">
-                    <h4 class="list-group-item-heading col-md-5 login">...</h4>
+                    <div class="list-group-item-heading col-md-5 login">...</div>
 
                     <div class="col-md-6">
                         <a href="..." class="url" target="_blank">...</a>

@@ -51,12 +51,12 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         var url = /^https?:\/\//.test(entry.url) ? entry.url : 'http://' + entry.url;
 
         // Bind values
-        block.find('h4.login').html(entry.login);
-        block.find('a.url').attr('href', url).html(url);
-        block.find('span.id').html(id);
+        block.find('.login').html(entry.login);
+        block.find('.url').attr('href', url).html(url);
+        block.find('.id').html(id);
 
         // Bind delete button
-        var deleteLink = block.find('a.delete');
+        var deleteLink = block.find('.delete');
         deleteLink.attr('href', deleteLink.attr('href') + id);
         ajaxify.ajaxifyLink(deleteLink, function (response) {
             deleteLink.closest('.list-group-item').remove();
@@ -65,7 +65,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         });
 
         // Bind copy button
-        var copyBtn = block.find('button.copy');
+        var copyBtn = block.find('.copy');
         copyBtn.attr('data-clipboard-text', entry.passphrase);
 
         var zeroClient = new zeroclipboard(copyBtn);

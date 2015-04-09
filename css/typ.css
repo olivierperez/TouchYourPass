@@ -49,3 +49,12 @@ textarea.noResize {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* Entries */
+#entries .list-group-item .url,
+#entries .list-group-item .login{
+    overflow: hidden;
+    text-overflow-ellipsis: '...';
+    text-overflow: ellipsis;
+    display: block;
+}
