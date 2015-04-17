@@ -16,7 +16,7 @@ define('ajaxify', ['password'], function (password) {
             // Load the module
             var moduleName = $(form).attr('data-module');
             require([moduleName], function (module) {
-                submitForm(module, form);
+                module && submitForm(module, form) || console.log('Module not found', moduleName);
             });
         });
     };
