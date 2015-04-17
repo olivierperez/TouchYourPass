@@ -31,6 +31,7 @@
                 sjcl: "{'/bower_components/sjcl/sjcl'|resource}",
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 zeroclipboard: "{'/bower_components/zeroclipboard/dist/ZeroClipboard'|resource}",
+                password: "{'/js/password'|resource}",
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
                 login: "{'/js/login'|resource}",

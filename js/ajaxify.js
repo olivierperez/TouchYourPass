@@ -1,7 +1,6 @@
 'use strict';
 
-define('ajaxify', ['jsSHA'], function (jsSHA) {
-    var salt = 'djDzy4PCTEcLcmd6GAkykPthkkgmpJJ8H75WCPyJNXV4pKj2';
+define('ajaxify', ['password'], function (password) {
 
     // Handle forms submition
     //-----------------------
@@ -23,37 +22,41 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
     };
 
     var submitForm = function (module, form) {
-        var method = $(form).attr('method');
-        var url = $(form).attr('action');
+        // If module does not define handleSubmit
+        // or if the return of handleSubmit is TRUE
+        if (!module.handleSubmit || module.handleSubmit(form)) {
+            var method = $(form).attr('method');
+            var url = $(form).attr('action');
 
-        // Retreive data
-        var values = extractedFieldValues(form, module);
+            // Retreive data
+            var values = extractedFieldValues(form, module);
 
-        // FormData
-        if (method.toLowerCase() == 'post') {
-            var formData = new FormData();
-            if (module.handleFormData) { // Module fills the formData
-                module.handleFormData(formData, values);
-            } else {
-                formData.append('data', JSON.stringify(values));
-            }
-        } else {
-            url += '&' + $.param(values);
-        }
-
-        // Send data
-        var xhr = new XMLHttpRequest();
-        xhr.open(method, url, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    module.onSuccess(JSON.parse(xhr.response));
+            // FormData
+            if (method.toLowerCase() == 'post') {
+                var formData = new FormData();
+                if (module.handleFormData) { // Module fills the formData
+                    module.handleFormData(formData, values);
                 } else {
-                    module.onFail(xhr.status, xhr.response);
+                    formData.append('data', JSON.stringify(values));
                 }
+            } else {
+                url += '&' + $.param(values);
             }
-        };
-        xhr.send(formData);
+
+            // Send data
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        module.onSuccess(JSON.parse(xhr.response));
+                    } else {
+                        module.onFail(xhr.status, xhr.response);
+                    }
+                }
+            };
+            xhr.send(formData);
+        }
     };
 
     var extractedFieldValues = function (form, module) {
@@ -66,8 +69,7 @@ define('ajaxify', ['jsSHA'], function (jsSHA) {
                     values[element.name] = module.handleElement(element);
                 } else { // If module doesnt handle, hash passwords and encode others
                     if (element.type == 'password') {
-                        var shaObj = new jsSHA(element.value + salt, 'TEXT');
-                        values[element.name] = shaObj.getHash('SHA-512', 'HEX');
+                        values[element.name] = password.hash(element.value);
                     } else {
                         values[element.name] = encodeURIComponent(element.value);
                     }
