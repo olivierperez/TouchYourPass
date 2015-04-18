@@ -14,7 +14,8 @@
     "Copy": "Copier",
     "Delete": "Supprimer",
     "Generate": "Générer",
-    "Hash": "Hash"
+    "Hash": "Hash",
+    "Title": "Titre"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"

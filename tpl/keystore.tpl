@@ -34,6 +34,13 @@
 
                         <div class="form-group">
                             <div class="input-group">
+                                <label for="title" class="input-group-addon">{__('Generic', 'Title')}</label>
+                                <input type="text" class="form-control" id="title" name="title">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
                                 <label for="login" class="input-group-addon">{__('Generic', 'Login')}</label>
                                 <input type="text" class="form-control" id="login" name="login">
                             </div>
@@ -62,7 +69,7 @@
             </div>
 
             <!-- Model -->
-            <div id="entry-model" class="list-group-item row" style="display:none">
+            <div id="entry-model" class="list-group-item row entry" style="display:none">
                 <div class="col-md-1">
                     <button class="btn btn-default copy" title="{__('Generic', 'Copy')}">
                         <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
@@ -70,7 +77,10 @@
                     </button>
                 </div>
                 <div class="col-md-11">
-                    <div class="list-group-item-heading col-md-5 login">...</div>
+                    <div class="list-group-item-heading col-md-5">
+                        <div class="title">...</div>
+                        <div class="login">...</div>
+                    </div>
 
                     <div class="col-md-6">
                         <a href="..." class="url" target="_blank">...</a>

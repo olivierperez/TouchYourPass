@@ -55,6 +55,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         var url = /^https?:\/\//.test(entry.url) ? entry.url : 'http://' + entry.url;
 
         // Bind values
+        block.find('.title').html(entry.title);
         block.find('.login').html(entry.login);
         block.find('.url').attr('href', url).html(url);
         block.find('.id').html(id);

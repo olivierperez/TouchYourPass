@@ -51,10 +51,15 @@ textarea.noResize {
 }
 
 /* Entries */
-#entries .list-group-item .url,
-#entries .list-group-item .login{
+#entries .entry .url,
+#entries .entry .login,
+#entries .entry .title {
     overflow: hidden;
     text-overflow-ellipsis: '...';
     text-overflow: ellipsis;
     display: block;
+}
+
+#entries .entry .title {
+    color: #926B42;
 }
