@@ -34,6 +34,10 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         console.log('keystore-fail', response);
     };
 
+    var handleElement = function (element) {
+        return undefined;
+    };
+
     var decrypt = function (encrypted) {
         var passphrase = $('#passphrase').val();
         var decrypted = sjcl.decrypt(passphrase, encrypted);
@@ -92,6 +96,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
     return {
         onSuccess: onSuccess,
         onFail: onFail,
+        handleElement: handleElement,
         displayEntry: displayEntry,
         decrypt: decrypt,
         encrypt: encrypt

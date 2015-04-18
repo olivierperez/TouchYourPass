@@ -7,17 +7,18 @@
     <h1>{__('Title', 'Keystore')}</h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
-            <div class="form-group">
-                <div class="input-group">
-                    <label for="passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
-                    <input type="password" class="form-control" id="passphrase" name="passphrase" autofocus>
+            <form action="{$SERVER_URL}/api.php?s=entry" method="get" data-module="keystore">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
+                        <input type="password" class="form-control" id="passphrase" name="passphrase" autofocus>
+                    </div>
                 </div>
-            </div>
 
-            <div class="text-center">
-                <a href="{$SERVER_URL}/api.php?s=entry" data-module="keystore"
-                   class="ajax btn btn-default">{__('Entry', 'Load entries')}</a>
-            </div>
+                <div class="text-center">
+                    <input type="submit" class="ajax btn btn-default" value="{__('Entry', 'Load entries')}"/>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row">
@@ -76,7 +77,8 @@
                     </div>
                     <span class="badge col-md-1 id">0</span>
 
-                    <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete" title="{__('Generic', 'Delete')}">
+                    <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete"
+                       title="{__('Generic', 'Delete')}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         <span class="sr-only">Delete</span>
                     </a>

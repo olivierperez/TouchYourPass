@@ -66,7 +66,10 @@ define('ajaxify', ['password'], function (password) {
             if (element instanceof HTMLElement && element.name != '') {
 
                 if (module.handleElement) { // Module handles the element
-                    values[element.name] = module.handleElement(element);
+                    var handleValue = module.handleElement(element);
+                    if (handleValue !== undefined) {
+                        values[element.name] = handleValue;
+                    }
                 } else { // If module doesnt handle, hash passwords and encode others
                     if (element.type == 'password') {
                         values[element.name] = password.hash(element.value);
