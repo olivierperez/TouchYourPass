@@ -89,8 +89,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     var encrypt = function (text) {
         var passphrase = $('#passphrase').val();
-        var enc = sjcl.encrypt(passphrase, text);
-        return enc;
+        return sjcl.encrypt(passphrase, text);
     };
 
     return {
