@@ -7,7 +7,7 @@ require 'inc/init.php';
 //--------
 
 if ($_SERVER['REQUEST_URI'] === '/') {
-    header('Location: ' . Utils::serverUrl() . '/index.php/');
+    header('Location: ' . Utils::serverUrl() . 'index.php/');
     exit;
 } else if ($_SERVER['REQUEST_URI'] === '/index.php/') {
     include 'partial/home.php';
