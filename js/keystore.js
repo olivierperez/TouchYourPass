@@ -78,7 +78,11 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
                 console.log('zeroclipboard ready');
             },
             'error': function (event) {
-                console.log('zeroclipboard error', event.name, event);
+                console.log('zeroclipboard error', event);
+                if (event.name === 'flash-deactivated') {
+                    $('.copy').attr('disabled', 'disabled')
+                        .parent().attr('title', 'no flash');
+                }
             }
         });
 
