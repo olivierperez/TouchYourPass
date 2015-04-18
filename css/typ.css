@@ -51,6 +51,12 @@ textarea.noResize {
 }
 
 /* Entries */
+#entries .row.entry {
+    font-size: 0.95em;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 #entries .entry .url,
 #entries .entry .login,
 #entries .entry .title {
@@ -62,4 +68,12 @@ textarea.noResize {
 
 #entries .entry .title {
     color: #926B42;
+}
+
+#entries .entry .id {
+    font-size: 0.8em;
+}
+
+#entries .entry .url {
+    font-size: 0.9em;
 }

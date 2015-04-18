@@ -71,21 +71,23 @@
             <!-- Model -->
             <div id="entry-model" class="list-group-item row entry" style="display:none">
                 <div class="col-md-1">
-                    <button class="btn btn-default copy" title="{__('Generic', 'Copy')}">
+                    <button class="btn btn-sm btn-default copy" title="{__('Generic', 'Copy')}">
                         <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
                         <span class="sr-only">Copy</span>
                     </button>
                 </div>
-                <div class="col-md-11">
-                    <div class="list-group-item-heading col-md-5">
-                        <div class="title">...</div>
-                        <div class="login">...</div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <a href="..." class="url" target="_blank">...</a>
-                    </div>
-                    <span class="badge col-md-1 id">0</span>
+                <div class="col-md-5">
+                    <div class="title">...</div>
+                    <div class="login">...</div>
+                </div>
+
+                <div class="col-md-5">
+                    <a href="..." class="url" target="_blank">...</a>
+                </div>
+
+                <div class="col-md-1">
+                    <span class="badge pull-right id">0</span>
 
                     <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete"
                        title="{__('Generic', 'Delete')}">
