@@ -16,7 +16,8 @@ define('ajaxify', ['password'], function (password) {
             // Load the module
             var moduleName = $(form).attr('data-module');
             require([moduleName], function (module) {
-                module && submitForm(module, form) || console.log('Module not found', moduleName);
+                module || console.log('Module not found', moduleName);
+                module && submitForm(module, form);
             });
         });
     };
@@ -27,6 +28,13 @@ define('ajaxify', ['password'], function (password) {
         if (!module.handleSubmit || module.handleSubmit(form)) {
             var method = $(form).attr('method');
             var url = $(form).attr('action');
+            var sumbitButton = $(form).find('input[type=submit]');
+
+            // Trigger onSubmit
+            module.onSubmit && module.onSubmit();
+
+            // Disabled submit button
+            sumbitButton.attr('disabled', 'disabled');
 
             // Retreive data
             var values = extractedFieldValues(form, module);
@@ -48,6 +56,7 @@ define('ajaxify', ['password'], function (password) {
             xhr.open(method, url, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
+                    sumbitButton.removeAttr('disabled');
                     if (xhr.status >= 200 && xhr.status < 300) {
                         module.onSuccess(JSON.parse(xhr.response));
                     } else {

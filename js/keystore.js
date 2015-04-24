@@ -2,6 +2,11 @@
 
 define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify, zeroclipboard) {
 
+    var onSubmit = function () {
+        var passphraseField = $('#passphrase');
+        passphraseField.closest('.form-group').removeClass('has-error');
+    };
+
     var onSuccess = function (response) {
         var passphraseField = $('#passphrase');
 
@@ -100,6 +105,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
     return {
         onSuccess: onSuccess,
         onFail: onFail,
+        onSubmit: onSubmit,
         handleElement: handleElement,
         displayEntry: displayEntry,
         decrypt: decrypt,
