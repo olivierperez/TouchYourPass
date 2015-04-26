@@ -1,6 +1,7 @@
 <?php
 
 use TouchYourPass\api\EntryApi;
+use TouchYourPass\api\GroupApi;
 use TouchYourPass\api\UserApi;
 
 require 'inc/init.php';
@@ -14,6 +15,9 @@ $api = null;
 // Select API
 
 switch ($_GET['s']) {
+    case 'group' :
+        $api = new GroupApi();
+        break;
     case 'entry' :
         $api = new EntryApi();
         break;

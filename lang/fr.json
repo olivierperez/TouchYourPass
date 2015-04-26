@@ -15,10 +15,14 @@
     "Delete": "Supprimer",
     "Generate": "Générer",
     "Hash": "Hash",
-    "Title": "Titre"
+    "Title": "Titre",
+    "Group": "Groupe"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"
+  },
+  "Group": {
+    "Default": "Défaut"
   },
   "PasswordHash": {
     "DontUseItFromComputerOfSomeoneElse": "Vous devriez pas utiliser ce formulaire sur l'ordinateur de quelqu'un d'autre. Peut-être qu'il/elle possède un logiciel pour mémoriser votre mot de passe."

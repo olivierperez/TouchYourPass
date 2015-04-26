@@ -34,6 +34,7 @@
                 password: "{'/js/password'|resource}",
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
+                group: "{'/js/group'|resource}",
                 login: "{'/js/login'|resource}",
                 ajaxify: "{'/js/ajaxify'|resource}"
             }

@@ -22,78 +22,121 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div id="entries" class="list-group">
+        <div class="col-md-4">
+            <!-- Groups list -->
+            <div id="groups">
+                <button id="default-group" type="button" class="btn btn-default title">{__('Group', 'Default')}</button>
             </div>
+
+            <!-- Add an group -->
+            <div id="add-group" class="well" style="display:none">
+                <form id="add-group-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=group"
+                      method="POST" data-module="group">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="group-title" class="input-group-addon">{__('Generic', 'Group')}</label>
+                            <input type="text" class="form-control" id="group-title" name="title">
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">{__('Generic', 'Add')}</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Group model -->
+            <div id="group-model" class="btn-group loaded" style="display:none">
+                <button type="button" class="btn btn-default title">...</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{$SERVER_URL}/api.php?s=group&id=" class="delete" data-method="delete"
+                           title="{__('Generic', 'Delete')}">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            {__('Generic', 'Delete')}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- Entries list -->
+            <div id="entries" class="list-group"></div>
 
             <!-- Add an entry -->
-            <div id="add-entry" class="well row" style="display:none">
-                <div class="col-md-12">
-                    <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry"
-                          method="POST" data-module="key">
+            <div id="add-entry" class="well" style="display:none">
+                <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry"
+                      method="POST" data-module="key">
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="title" class="input-group-addon">{__('Generic', 'Title')}</label>
-                                <input type="text" class="form-control" id="title" name="title">
-                            </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="title" class="input-group-addon">{__('Generic', 'Title')}</label>
+                            <input type="text" class="form-control" id="title" name="title">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="login" class="input-group-addon">{__('Generic', 'Login')}</label>
-                                <input type="text" class="form-control" id="login" name="login">
-                            </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="login" class="input-group-addon">{__('Generic', 'Login')}</label>
+                            <input type="text" class="form-control" id="login" name="login">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="url" class="input-group-addon">{__('Generic', 'Web site')}</label>
-                                <input type="text" class="form-control" id="url" name="url">
-                            </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="url" class="input-group-addon">{__('Generic', 'Web site')}</label>
+                            <input type="text" class="form-control" id="url" name="url">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="add_passphrase"
-                                       class="input-group-addon">{__('Generic', 'Passphrase')}</label>
-                                <input type="password" class="form-control" id="add_passphrase" name="passphrase">
-                            </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="add_passphrase"
+                                   class="input-group-addon">{__('Generic', 'Passphrase')}</label>
+                            <input type="password" class="form-control" id="add_passphrase" name="passphrase">
                         </div>
+                    </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">{__('Generic', 'Add')}</button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">{__('Generic', 'Add')}</button>
+                    </div>
+                </form>
             </div>
 
-            <!-- Model -->
-            <div id="entry-model" class="list-group-item row entry" style="display:none">
-                <div class="col-md-1">
-                    <button class="btn btn-sm btn-default copy" title="{__('Generic', 'Copy')}">
-                        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-                        <span class="sr-only">Copy</span>
-                    </button>
-                </div>
+            <!-- Entry model -->
+            <div id="entry-model" class="list-group-item entry" style="display:none">
+                <div class="row">
+                    <div class="col-md-1">
+                        <button class="btn btn-sm btn-default copy" title="{__('Generic', 'Copy')}">
+                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                            <span class="sr-only">Copy</span>
+                        </button>
+                    </div>
 
-                <div class="col-md-5">
-                    <div class="title">...</div>
-                    <div class="login">...</div>
-                </div>
+                    <div class="col-md-5">
+                        <div class="title">...</div>
+                        <div class="login">...</div>
+                    </div>
 
-                <div class="col-md-5">
-                    <a href="..." class="url" target="_blank">...</a>
-                </div>
+                    <div class="col-md-5">
+                        <a href="..." class="url" target="_blank">...</a>
+                    </div>
 
-                <div class="col-md-1">
-                    <span class="badge pull-right id">0</span>
+                    <div class="col-md-1">
+                        <span class="badge pull-right id">0</span>
 
-                    <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete"
-                       title="{__('Generic', 'Delete')}">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        <span class="sr-only">Delete</span>
-                    </a>
+                        <a href="{$SERVER_URL}/api.php?s=entry&id=" class="pull-right delete" data-method="delete"
+                           title="{__('Generic', 'Delete')}">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <span class="sr-only">Delete</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

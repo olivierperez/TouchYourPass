@@ -3,14 +3,12 @@ namespace TouchYourPass\api;
 
 use TouchYourPass\ServiceFactory;
 
-class EntryApi extends Api {
+class GroupApi extends Api {
 
-    private $entryService;
     private $groupService;
     private $userService;
 
     function __construct() {
-        $this->entryService = ServiceFactory::entryService();
         $this->groupService = ServiceFactory::groupService();
         $this->userService = ServiceFactory::userService();
     }
@@ -21,7 +19,7 @@ class EntryApi extends Api {
         }
 
         $data = $_POST['data'];
-        $entry = $this->entryService->save($data);
+        $entry = $this->groupService->save($data);
 
         if ($entry !== false) {
             return $entry;
@@ -35,11 +33,10 @@ class EntryApi extends Api {
             return $this->unauthorized();
         }
 
-        $entries = $this->entryService->findByConnectedUser();
-        $groups = $this->groupService->findByConnectedUser();
+        $entries = $this->groupService->findByConnectedUser();
 
         if ($entries !== false) {
-            return ['entries' => $entries, 'groups' => $groups];
+            return $entries;
         } else {
             return $this->forbidden();
         }
@@ -47,7 +44,7 @@ class EntryApi extends Api {
 
     function onDelete() {
         $id = $_GET['id'];
-        $deleted = $this->entryService->deleteById($id);
+        $deleted = $this->groupService->deleteById($id);
 
         if ($deleted) {
             return array('deleted' => $id);
