@@ -2,6 +2,13 @@
 
 define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify, zeroclipboard) {
 
+    // Variables
+
+    var groups = {
+        default: []
+    };
+    console.log('groups', groups);
+
     // Functions
 
     var onSubmit = function () {
@@ -15,18 +22,16 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         cleanGroupsDisplay();
         cleanEntriesDisplay();
 
-        // Decrypt entries
+        // Decrypt groups
 
-        var entries = response.entries;
-        var decryptionSuccess = false;
-        for (var x in entries) {
-            var r = entries[x];
-            var encrypted = r.content;
+        var gs = response.groups;
+        for (var y in gs) {
+            var g = gs[y];
 
             try {
-                var entry = decrypt(encrypted);
+                var group = decrypt(g.content);
 
-                displayEntry(r.id, entry);
+                displayGroup(g.id, group);
                 decryptionSuccess = true;
             } catch (e) {
                 console.error('Error found', e);
@@ -34,17 +39,30 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             }
         }
 
-        // Decrypt groups
+        // Decrypt entries
 
-        var groups = response.groups;
-        for (var x in groups) {
-            var r = groups[x];
-            var encrypted = r.content;
+        var entries = response.entries;
+        var decryptionSuccess = false;
+        for (var x in entries) {
+            var e = entries[x];
 
             try {
-                var group = decrypt(encrypted);
+                // Decrypt entry
+                var entry = decrypt(e.content);
 
-                displayGroup(r.id, group);
+                // Add entry to right group
+                if (entry.group != undefined) {
+                    if (groups[entry.group] == undefined) {
+                        groups[entry.group] = [entry];
+                    } else {
+                        groups[entry.group].push(entry);
+                    }
+                } else {
+                    groups.default.push(entry);
+                    displayEntry(e.id, entry);
+                }
+
+                // Display entry
                 decryptionSuccess = true;
             } catch (e) {
                 console.error('Error found', e);
@@ -57,6 +75,8 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             $('#add-group').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
         }
+
+        console.log('groups', groups);
 
     };
 
@@ -77,6 +97,9 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     var cleanGroupsDisplay = function () {
         $('#groups').find('.loaded').remove();
+        groups = {
+            default: []
+        };
     };
 
     var cleanEntriesDisplay = function () {

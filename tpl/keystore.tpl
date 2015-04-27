@@ -25,7 +25,7 @@
         <div class="col-md-4">
             <!-- Groups list -->
             <div id="groups">
-                <button id="default-group" type="button" class="btn btn-default title">{__('Group', 'Default')}</button>
+                <button id="default-group" type="button" class="btn btn-default active">{__('Group', 'Default')}</button>
             </div>
 
             <!-- Add an group -->
