@@ -28,7 +28,7 @@ define('ajaxify', ['password'], function (password) {
         if (!module.handleSubmit || module.handleSubmit(form)) {
             var method = $(form).attr('method');
             var url = $(form).attr('action');
-            var sumbitButton = $(form).find('input[type=submit]');
+            var sumbitButton = $(form).find('input[type=submit], button[type=submit]');
 
             // Trigger onSubmit
             module.onSubmit && module.onSubmit();
