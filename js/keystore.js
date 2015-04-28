@@ -22,6 +22,8 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         cleanGroupsDisplay();
         cleanEntriesDisplay();
 
+        var decryptionSuccess = false;
+
         // Decrypt groups
 
         var gs = response.groups;
@@ -42,7 +44,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         // Decrypt entries
 
         var entries = response.entries;
-        var decryptionSuccess = false;
         for (var x in entries) {
             var e = entries[x];
 
@@ -53,12 +54,11 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
                 // Add entry to right group
                 if (entry.group != undefined) {
                     if (groups[entry.group] == undefined) {
-                        groups[entry.group] = [entry];
-                    } else {
-                        groups[entry.group].push(entry);
+                        groups[entry.group] = [];
                     }
+                    groups[entry.group][e.id] = entry;
                 } else {
-                    groups.default.push(entry);
+                    groups.default[e.id] = entry;
                     displayEntry(e.id, entry);
                 }
 
@@ -194,12 +194,12 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         var group = groups[groupId];
         //console.log('group', groupId, group);
 
-        $('#entries').fadeOut(200, function() {
+        $('#entries').fadeOut(200, function () {
             cleanEntriesDisplay();
             for (var x in group) {
                 //console.log('group[x]', x, group[x]);
                 var entry = group[x];
-                displayEntry(entry.id, entry);
+                displayEntry(x, entry);
             }
 
             $('#entries').fadeIn(200);
