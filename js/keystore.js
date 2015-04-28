@@ -97,6 +97,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     var cleanGroupsDisplay = function () {
         $('#groups').find('.loaded').remove();
+        $('#group').html('<option value="">&nbsp;</option>');
         groups = {
             default: []
         };
@@ -171,6 +172,12 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         // Add new block to HTML
         $('#default-group').before(block);
         block.attr('style', null);
+
+        // Add group to select box
+        var option = $(document.createElement('option'));
+        option.attr('value', id);
+        option.html(group.title);
+        $('#group').append(option);
     };
 
     var encrypt = function (text) {

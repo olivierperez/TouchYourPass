@@ -83,6 +83,14 @@
 
                     <div class="form-group">
                         <div class="input-group">
+                            <label for="group" class="input-group-addon">{__('Generic', 'Group')}</label>
+                            <select class="form-control" id="group" name="group">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
                             <label for="login" class="input-group-addon">{__('Generic', 'Login')}</label>
                             <input type="text" class="form-control" id="login" name="login">
                         </div>
