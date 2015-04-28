@@ -73,6 +73,8 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         if (decryptionSuccess || (response.entries.length === 0 && response.groups.length === 0)) {
             $('#add-entry').fadeIn('slow');
             $('#add-group').fadeIn('slow');
+            $('#entries').fadeIn('slow');
+            $('#groups').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
         }
 

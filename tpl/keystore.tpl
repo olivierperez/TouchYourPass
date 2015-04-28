@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4">
             <!-- Groups list -->
-            <div id="groups">
+            <div id="groups" style="display:none">
                 <button id="default-group" type="button" class="btn btn-default active" data-id="default">{__('Group', 'Default')}</button>
             </div>
 
@@ -67,7 +67,7 @@
         </div>
         <div class="col-md-8">
             <!-- Entries list -->
-            <div id="entries" class="list-group"></div>
+            <div id="entries" class="list-group" style="display:none"></div>
 
             <!-- Add an entry -->
             <div id="add-entry" class="well" style="display:none">
