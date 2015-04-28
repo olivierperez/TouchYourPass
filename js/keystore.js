@@ -7,7 +7,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
     var groups = {
         default: []
     };
-    console.log('groups', groups);
 
     // Functions
 
@@ -33,7 +32,9 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             try {
                 var group = decrypt(g.content);
 
+                groups[g.id] = [];
                 displayGroup(g.id, group);
+
                 decryptionSuccess = true;
             } catch (e) {
                 console.error('Error found', e);
@@ -42,7 +43,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         }
 
         // Decrypt entries
-
         var entries = response.entries;
         for (var x in entries) {
             var e = entries[x];
@@ -52,15 +52,8 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
                 var entry = decrypt(e.content);
 
                 // Add entry to right group
-                if (entry.group != undefined) {
-                    if (groups[entry.group] == undefined) {
-                        groups[entry.group] = [];
-                    }
-                    groups[entry.group][e.id] = entry;
-                } else {
-                    groups.default[e.id] = entry;
-                    displayEntry(e.id, entry);
-                }
+                var displayEntry = entry.group == 'default' || groups[entry.group] == undefined;
+                addEntry(e.id, entry, displayEntry);
 
                 // Display entry
                 decryptionSuccess = true;
@@ -77,8 +70,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             $('#groups').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
         }
-
-        console.log('groups', groups);
 
     };
 
@@ -109,6 +100,16 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         $('#entries').html('');
     };
 
+    var addEntry = function (id, entry, display) {
+        var group = entry.group || 'default';
+        if (groups[group] == undefined) {
+            groups[group] = [];
+        }
+        groups[group][id] = entry;
+
+        display && displayEntry(id, entry);
+    };
+
     var displayEntry = function (id, entry) {
         var block = $('#entry-model').clone().attr('id', '');
 
@@ -125,6 +126,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         deleteLink.attr('href', deleteLink.attr('href') + id);
         ajaxify.ajaxifyLink(deleteLink, function (response) {
             deleteLink.closest('.list-group-item').remove();
+            delete groups[entry.group || 'default'][id];
         }, function (status, response) {
             console.log('ajaxify failed', deleteLink, status, response);
         });
@@ -237,7 +239,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         onFail: onFail,
         onSubmit: onSubmit,
         handleElement: handleElement,
-        displayEntry: displayEntry,
+        addEntry: addEntry,
         displayGroup: displayGroup,
         decrypt: decrypt,
         encrypt: encrypt

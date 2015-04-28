@@ -4,7 +4,7 @@ define('key', ['sjcl', 'keystore'], function (sjcl, keystore) {
 
     var onSuccess = function (response) {
         var entry = keystore.decrypt(response.content);
-        keystore.displayEntry(response.id, entry);
+        keystore.addEntry(response.id, entry, true);
 
         $('#add-entry-form').trigger('reset');
     };
