@@ -196,11 +196,25 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
         $('#entries').fadeOut(200, function () {
             cleanEntriesDisplay();
+
+            // Display entries of groups
+
             for (var x in group) {
                 //console.log('group[x]', x, group[x]);
                 var entry = group[x];
                 displayEntry(x, entry);
             }
+
+            // Preselect select box for group selection
+
+            $('#group').find('option').each(function (index, element) {
+                element = $(element);
+                if (element.val() == groupId) {
+                    element.prop('selected', true);
+                } else {
+                    element.removeAttr('selected');
+                }
+            });
 
             $('#entries').fadeIn(200);
         });
@@ -209,7 +223,9 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     // Load module
 
-    $('#groups').contents().filter(function(){ return this.nodeType == 3; }).remove();
+    $('#groups').contents().filter(function () {
+        return this.nodeType == 3;
+    }).remove();
     $('#default-group').on('click', onGroupSelected);
 
     // Return functions
