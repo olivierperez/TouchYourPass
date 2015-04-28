@@ -155,7 +155,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
         // Bind values
         block.find('.title').html(group.title);
-        block.find('.id').html(id);
+        block.find('.title').attr('data-id', id);
 
         // Bind click
         block.find('.title').on('click', onGroupSelected);
@@ -186,8 +186,25 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
     };
 
     var onGroupSelected = function () {
-        $(this).closest('#groups').find('.active').removeClass('active');
-        $(this).addClass('active');
+        var $this = $(this);
+        $this.closest('#groups').find('.active').removeClass('active');
+        $this.addClass('active');
+
+        var groupId = $this.attr('data-id');
+        var group = groups[groupId];
+        //console.log('group', groupId, group);
+
+        $('#entries').fadeOut(200, function() {
+            cleanEntriesDisplay();
+            for (var x in group) {
+                //console.log('group[x]', x, group[x]);
+                var entry = group[x];
+                displayEntry(entry.id, entry);
+            }
+
+            $('#entries').fadeIn(200);
+        });
+
     };
 
     // Load module
