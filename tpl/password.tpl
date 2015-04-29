@@ -7,8 +7,8 @@
     <h1>{__('Title', 'PasswordHashGeneration')}</h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
-            <div class="col-md-12">
-                <form class="form-horizontal" action="{$SERVER_URL}/api.php?s=user" method="POST" data-module="password">
+            <div>
+                <form action="{$SERVER_URL}/api.php?s=user" method="POST" data-module="password">
 
                     <div class="alert alert-danger">
                         <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> {__('PasswordHash', 'DontUseItFromComputerOfSomeoneElse')}

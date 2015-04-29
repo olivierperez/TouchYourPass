@@ -7,8 +7,8 @@
     <h1>{$APPLICATION_NAME}</h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
-            <div class="col-md-12">
-                <form class="form-horizontal" action="{$SERVER_URL}/api.php?s=user" method="POST" data-module="login">
+            <div>
+                <form action="{$SERVER_URL}/api.php?s=user" method="POST" data-module="login">
 
                     <div class="form-group">
                         <div class="input-group">

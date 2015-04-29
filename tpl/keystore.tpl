@@ -30,7 +30,7 @@
 
             <!-- Add an group -->
             <div id="add-group" class="well" style="display:none">
-                <form id="add-group-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=group"
+                <form id="add-group-form" action="{$SERVER_URL}/api.php?s=group"
                       method="POST" data-module="group">
 
                     <div class="form-group">
@@ -71,7 +71,7 @@
 
             <!-- Add an entry -->
             <div id="add-entry" class="well" style="display:none">
-                <form id="add-entry-form" class="form-horizontal" action="{$SERVER_URL}/api.php?s=entry"
+                <form id="add-entry-form" action="{$SERVER_URL}/api.php?s=entry"
                       method="POST" data-module="key">
 
                     <div class="form-group">
