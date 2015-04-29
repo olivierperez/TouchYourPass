@@ -4,6 +4,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     // Variables
 
+    var currentGroup = 'default';
     var groups = {
         default: []
     };
@@ -52,8 +53,8 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
                 var entry = decrypt(e.content);
 
                 // Add entry to right group
-                var displayEntry = entry.group == 'default' || groups[entry.group] == undefined;
-                addEntry(e.id, entry, displayEntry);
+                entry.group = entry.group == undefined || groups[entry.group] == undefined ? 'default' : entry.group;
+                addEntry(e.id, entry);
 
                 // Display entry
                 decryptionSuccess = true;
@@ -64,12 +65,15 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         }
 
         if (decryptionSuccess || (response.entries.length === 0 && response.groups.length === 0)) {
+            showGroup('default');
             $('#add-entry').fadeIn('slow');
             $('#add-group').fadeIn('slow');
             $('#entries').fadeIn('slow');
             $('#groups').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
         }
+
+        console.log('groups', groups);
 
     };
 
@@ -90,7 +94,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     var cleanGroupsDisplay = function () {
         $('#groups').find('.loaded').remove();
-        $('#group').html('<option value="">&nbsp;</option>');
+        $('#group').html('<option value="default">&nbsp;</option>');
         groups = {
             default: []
         };
@@ -100,14 +104,11 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         $('#entries').html('');
     };
 
-    var addEntry = function (id, entry, display) {
-        var group = entry.group || 'default';
-        if (groups[group] == undefined) {
-            groups[group] = [];
-        }
+    var addEntry = function (id, entry) {
+        var group = entry.group;
         groups[group][id] = entry;
 
-        display && displayEntry(id, entry);
+        entry.group == currentGroup && displayEntry(id, entry);
     };
 
     var displayEntry = function (id, entry) {
@@ -191,10 +192,15 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
     var onGroupSelected = function () {
         var $this = $(this);
+        var groupId = $this.attr('data-id');
         $this.closest('#groups').find('.active').removeClass('active');
         $this.addClass('active');
 
-        var groupId = $this.attr('data-id');
+        showGroup(groupId);
+    };
+
+    var showGroup = function (groupId) {
+        currentGroup = groupId;
         var group = groups[groupId];
         //console.log('group', groupId, group);
 
@@ -222,7 +228,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
 
             $('#entries').fadeIn(200);
         });
-
     };
 
     // Load module
