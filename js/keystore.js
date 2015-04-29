@@ -65,7 +65,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         }
 
         if (decryptionSuccess || (response.entries.length === 0 && response.groups.length === 0)) {
-            showGroup('default');
+            $('#' + currentGroup + '-group').trigger('click');
             $('#add-entry').fadeIn('slow');
             $('#add-group').fadeIn('slow');
             $('#entries').fadeIn('slow');
@@ -161,6 +161,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         // Bind values
         block.find('.title').html(group.title);
         block.find('.title').attr('data-id', id);
+        block.find('.title').attr('id', id + '-group');
 
         // Bind click
         block.find('.title').on('click', onGroupSelected);
