@@ -62,7 +62,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span class="navbar-brand">{$APPLICATION_NAME|html}</span>
+            <a class="navbar-brand" href="{$SERVER_URL}">{$APPLICATION_NAME|html}</a>
         </div>
     </div>
     <!-- /.container-fluid -->
