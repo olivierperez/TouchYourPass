@@ -14,7 +14,7 @@ class UserService {
     public function authenticate($name, $passphrase) {
         $user = $this->userRepository->findByName($name);
 
-        if ($user !== false && $this->hash($passphrase) == $user->passphrase) {
+        if ($user !== false && $user->active == 1 && $this->hash($passphrase) == $user->passphrase) {
             $_SESSION['user'] = $user;
             return $user;
         }
@@ -23,7 +23,7 @@ class UserService {
         return false;
     }
 
-    private function hash($passphrase) {// TODO replace with bcrypt ?
+    private function hash($passphrase) { // TODO replace with bcrypt ?
         return hash('sha512', $passphrase . PASSPHRASE_SALT);
     }
 
@@ -37,6 +37,11 @@ class UserService {
 
     public function findById($userId) {
         return $this->userRepository->findById($userId);
+    }
+
+    public function create($name, $passphrase) {
+        $userId = $this->userRepository->save($name, $this->hash($passphrase));
+        return $userId;
     }
 
 }

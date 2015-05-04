@@ -25,4 +25,12 @@ class UserRepository extends Repository {
         return $user;
     }
 
+    public function save($name, $hash) {
+        $stmt = $this->prepare('INSERT INTO `' . $this->prefix('user') . '` (name, passphrase) VALUES (:name, :hash)');
+        $stmt->execute(array('name' => $name, 'hash' => $hash));
+        $id = $this->lastInsertId();
+
+        return $id;
+    }
+
 }

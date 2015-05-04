@@ -1,6 +1,6 @@
 'use strict';
 
-define('ajaxify', ['password'], function (password) {
+define('ajaxify', ['passphrase'], function (passphrase) {
 
     // Handle forms submition
     //-----------------------
@@ -60,7 +60,7 @@ define('ajaxify', ['password'], function (password) {
                     if (xhr.status >= 200 && xhr.status < 300) {
                         module.onSuccess(JSON.parse(xhr.response));
                     } else {
-                        module.onFail(xhr.status, xhr.response);
+                        module.onFail(xhr.status, JSON.parse(xhr.response));
                     }
                 }
             };
@@ -81,7 +81,7 @@ define('ajaxify', ['password'], function (password) {
                     }
                 } else { // If module doesnt handle, hash passwords and encode others
                     if (element.type == 'password') {
-                        values[element.name] = password.hash(element.value);
+                        values[element.name] = passphrase.hash(element.value);
                     } else {
                         values[element.name] = encodeURIComponent(element.value);
                     }
@@ -112,7 +112,7 @@ define('ajaxify', ['password'], function (password) {
                         if (xhr.status >= 200 && xhr.status < 300) {
                             module.onSuccess(JSON.parse(xhr.response));
                         } else {
-                            module.onFail(xhr.status, xhr.response);
+                            module.onFail(xhr.status, JSON.parse(xhr.response));
                         }
                     }
                 };
@@ -139,7 +139,7 @@ define('ajaxify', ['password'], function (password) {
                     if (xhr.status >= 200 && xhr.status < 300) {
                         onSuccess(JSON.parse(xhr.response));
                     } else {
-                        onFail(xhr.status, xhr.response);
+                        onFail(xhr.status, JSON.parse(xhr.response));
                     }
                 }
             };

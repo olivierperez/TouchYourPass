@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_URI'] === '/') {
     include 'partial/home.php';
 } else if ($_SERVER['REQUEST_URI'] === '/index.php/keystore') {
     include 'partial/keystore.php';
-} else if ($_SERVER['REQUEST_URI'] === '/index.php/password') {
-    include 'partial/password.php';
+} else if ($_SERVER['REQUEST_URI'] === '/index.php/register') {
+    include 'partial/register.php';
 } else {
     http_response_code(404);
     $smarty->display('404.tpl');

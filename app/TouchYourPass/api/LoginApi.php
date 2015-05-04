@@ -3,7 +3,7 @@ namespace TouchYourPass\api;
 
 use TouchYourPass\ServiceFactory;
 
-class UserApi extends Api {
+class LoginApi extends Api {
 
     private $userService;
 
@@ -12,16 +12,16 @@ class UserApi extends Api {
     }
 
     /**
-     * Add a user.
+     * Connect the user.
      *
      * @return object The object to return as JSON
      */
     function onPost() {
         $data = json_decode($_POST['data']);
-        $created = $this->userService->create($data->name, $data->passphrase);
+        $authenticated = $this->userService->authenticate($data->name, $data->passphrase);
 
-        if ($created) {
-            return array('msg' => __('Register','RegisterSucceededWaitForAdminValidateYourAccount'));
+        if ($authenticated) {
+            return array('name' => $authenticated->name);
         } else {
             return $this->forbidden();
         }

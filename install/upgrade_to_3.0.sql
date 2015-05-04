@@ -1,0 +1,1 @@
+ALTER TABLE `typ_user` ADD `active` BOOLEAN NOT NULL DEFAULT FALSE ;
