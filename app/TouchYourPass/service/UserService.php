@@ -44,4 +44,8 @@ class UserService {
         return $userId;
     }
 
+    public function findAll() {
+        return $this->userRepository->findAll();
+    }
+
 }

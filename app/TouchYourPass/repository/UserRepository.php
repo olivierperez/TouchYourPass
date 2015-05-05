@@ -33,4 +33,10 @@ class UserRepository extends Repository {
         return $id;
     }
 
+    public function findAll() {
+        $stmt = $this->prepare('SELECT * FROM `' . $this->prefix('user') . '`');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 }

@@ -2,9 +2,13 @@
   "Title": {
     "TouchYourPass": "TouchYourPass",
     "Keystore": "Trousseau de clés",
-    "Register": "Inscription"
+    "Register": "Inscription",
+    "Users": "Utilisateurs"
   },
   "Generic": {
+    "id": "id",
+    "Yes": "Oui",
+    "No": "Non",
     "Name": "Nom",
     "Passphrase": "Phrase de passe",
     "Log-in": "Connection",
@@ -17,7 +21,9 @@
     "Generate": "Générer",
     "Hash": "Hash",
     "Title": "Titre",
-    "Group": "Groupe"
+    "Group": "Groupe",
+    "Active": "Activé",
+    "Load": "Charger"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"

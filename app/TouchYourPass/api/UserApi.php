@@ -28,7 +28,7 @@ class UserApi extends Api {
     }
 
     function onGet() {
-        return $this->badRequest();
+        return $this->userService->findAll();
     }
 
     function onDelete() {
