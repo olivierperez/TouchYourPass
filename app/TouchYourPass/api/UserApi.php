@@ -18,12 +18,15 @@ class UserApi extends Api {
      */
     function onPost() {
         $data = json_decode($_POST['data']);
+        if (empty($data->name) || empty($data->passphrase) || $data->passphrase == 'd96b7e56fa181a09ef450fbe5db9ef957a93ee7380df25fed8670e97ce6ce632f5da8c567fb59f8afd13e50492626270498bd593cf1f52d63b40744cdb11e58f') {
+            return $this->badRequest();
+        }
         $created = $this->userService->create($data->name, $data->passphrase);
 
         if ($created) {
             return array('msg' => __('Register','RegisterSucceededWaitForAdminValidateYourAccount'));
         } else {
-            return $this->forbidden();
+            return $this->conflict(__('Register','TheAccountAlreadyExists'));
         }
     }
 

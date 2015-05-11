@@ -31,7 +31,6 @@
                 sjcl: "{'/bower_components/sjcl/sjcl'|resource}",
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 zeroclipboard: "{'/bower_components/zeroclipboard/dist/ZeroClipboard'|resource}",
-                register: "{'/js/register'|resource}",
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
                 group: "{'/js/group'|resource}",

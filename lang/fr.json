@@ -32,7 +32,8 @@
     "Default": "Défaut"
   },
   "Register": {
-    "RegisterSucceededWaitForAdminValidateYourAccount": "Vous êtes inscrit, vous pourrez utiliser l'application quand l'administrateur aura validé votre compte."
+    "RegisterSucceededWaitForAdminValidateYourAccount": "Vous êtes inscrit, vous pourrez utiliser l'application quand l'administrateur aura validé votre compte.",
+    "TheAccountAlreadyExists": "Ce compte existe déjà."
   },
   "Error": {
     "Even Sherlock Holmes can not find the page you are looking for. You should go far away...": "Même Sherlock Holmes ne peut trouver la page que vous recherchez. Vous devries partir loin..."

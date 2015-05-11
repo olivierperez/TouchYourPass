@@ -27,7 +27,7 @@ abstract class Api {
 
     protected function badRequest() {
         http_response_code(400);
-        return new ApiError(400, 'Bad Request', null);
+        return new ApiError('Bad Request', 'Serveur cannot process the request due to a malformed request syntax.', null);
     }
 
     /**
@@ -37,7 +37,7 @@ abstract class Api {
      */
     protected function unauthorized() {
         http_response_code(401);
-        return new ApiError(401, 'Unauthorized', null);
+        return new ApiError('Unauthorized', 'Authentication is required and has failed or has not yet been provided.', null);
     }
 
     /**
@@ -47,12 +47,23 @@ abstract class Api {
      */
     protected function forbidden() {
         http_response_code(403);
-        return new ApiError(403, 'Forbidden', null);
+        return new ApiError('Forbidden', 'The request was a valid request, but the server is refusing to respond to it.', null);
+    }
+
+    /**
+     * Action can't be processed in this situation.
+     *
+     * @param string $msg Message to add to response
+     * @return ApiError
+     */
+    protected function conflict($msg) {
+        http_response_code(409);
+        return new ApiError('Conflict', $msg, null);
     }
 
     protected function notImplemented() {
         http_response_code(501);
-        return new ApiError(501, 'Not implemented', null);
+        return new ApiError('Not implemented', 'Feature is not yet implemented!', null);
     }
 
 }

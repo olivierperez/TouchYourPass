@@ -1,6 +1,33 @@
 {extends file='page.tpl'}
 
 {block name=head}
+    <script type="text/javascript">
+        define('register', function () {
+
+            var onSuccess = function (response) {
+                showMessage('success', response.msg);
+            };
+
+            var onFail = function (status, response) {
+                console.log(response);
+                showMessage('danger', '<strong>' + status + ' ' + response.error + '</strong><br/>' + response.error_description);
+            };
+
+            var showMessage = function (type, message) {
+                var msgBlock = $('#msg');
+                msgBlock.html(message);
+                msgBlock.removeClass('alert-success');
+                msgBlock.removeClass('alert-danger');
+                msgBlock.addClass('alert-' + type);
+                msgBlock.fadeIn('fast');
+            };
+
+            return {
+                onSuccess: onSuccess,
+                onFail: onFail
+            }
+        });
+    </script>
 {/block}
 
 {block name=main}

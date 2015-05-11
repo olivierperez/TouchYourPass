@@ -40,8 +40,14 @@ class UserService {
     }
 
     public function create($name, $passphrase) {
-        $userId = $this->userRepository->save($name, $this->hash($passphrase));
-        return $userId;
+        $user = $this->userRepository->findByName($name);
+
+        if ($user) {
+            return false;
+        } else {
+            $userId = $this->userRepository->save($name, $this->hash($passphrase));
+            return $userId;
+        }
     }
 
     public function findAll() {
