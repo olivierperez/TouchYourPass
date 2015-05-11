@@ -22,7 +22,8 @@
 
                 tr.find('.id').html(user.id);
                 tr.find('.name').html(user.name);
-                tr.find('.activated').html(user.active ? '{__('Generic', 'Yes')}' : '{__('Generic', 'No')}');
+                user.active == 1 && tr.find('.activated').find('.no').remove();
+                user.active == 0 && tr.find('.activated').find('.yes').remove();
 
                 tr.fadeIn('fast');
             };
@@ -49,7 +50,10 @@
             </tr>
             <tr id="user-model" style="display:none">
                 <td class="id">id</td>
-                <td class="activated">activated</td>
+                <td class="activated">
+                    <span class="glyphicon glyphicon-ok yes" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></span>
+                </td>
                 <td class="name">name</td>
             </tr>
         </table>
