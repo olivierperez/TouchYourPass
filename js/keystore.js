@@ -33,7 +33,6 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             try {
                 var group = decrypt(g.content);
 
-                groups[g.id] = [];
                 displayGroup(g.id, group);
 
                 decryptionSuccess = true;
@@ -156,6 +155,10 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
     };
 
     var displayGroup = function (id, group) {
+        // Create an empty group
+        groups[id] = [];
+
+        // Copy the model
         var block = $('#group-model').clone().attr('id', '');
 
         // Bind values
