@@ -31,7 +31,7 @@
 {/block}
 
 {block name=main}
-    <h1>{__('Title', 'Register')}</h1>
+    <h1><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
             <div>

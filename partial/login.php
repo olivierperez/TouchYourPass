@@ -1,3 +1,3 @@
 <?php
 
-$smarty->display('home.tpl');
+$smarty->display('login.tpl');

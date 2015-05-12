@@ -27,6 +27,14 @@
     "Active": "Activé",
     "Load": "Charger"
   },
+  "Home": {
+    "Passphrases": "Phrases de passe",
+    "PassphrasesExplanation": "Dans TouchYourPass il existe 2 phrases de passe que vous devez retenir : <ul><li>La première est à utiliser avec votre login, <strong>elle sert à vous connecter&nbsp;</strong>;</li><li>La seconde sert à déchiffrer <strong>sur votre ordinateur</strong> les mots de passes que vous avez enregistré.</li></ul>",
+    "IsItSafe": "Est-ce sûr ?",
+    "IsItSafeExplanation": "<p>Les mots de passe sont chiffrés grâce à la seconde phrase de passe, <strong>tout chiffrement/déchiffrement se fait sur votre ordinateur</strong>. Ni l'administrateur du site, ni le gouvernement, ni la NSA ne peuvent avoir accès à vos mots de passe sans cette phrase de passe.</p><p>A vous d'en choisir une suffisament longue et farfelue pour vous protéger.</p>",
+    "OpenSourceProject": "Projet open source",
+    "OpenSourceProjectExplanation": "<p>Le code source de ce site est accessible à tous, car c'est en laissant les meilleurs l'<strong>auditer</strong> et le <strong>corriger</strong> que l'on arrivera à produire le meilleur outils de gestion de mots de passe en ligne.</p><p>N'hésitez pas à y jeter un oeil et à faire vos remarques, aucune idée n'est mauvaise à partir du moment où elle est exprimée.</p>"
+  },
   "Entry": {
     "Load entries": "Charger les enregistrements"
   },

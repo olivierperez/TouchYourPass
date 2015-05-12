@@ -82,7 +82,7 @@
                         </a>
                     </li>
                     <li class="{cond if=$currentPage=='login' then='active'}">
-                        <a href="{$SERVER_URL}/index.php/">
+                        <a href="{$SERVER_URL}/index.php/login">
                             <span class="glyphicon glyphicon-log-in"></span>
                             {__('Title', 'Log-in')}
                         </a>
