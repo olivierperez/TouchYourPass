@@ -22,8 +22,32 @@
 
                 tr.find('.id').html(user.id);
                 tr.find('.name').html(user.name);
-                user.active == 1 && tr.find('.activated').find('.no').remove();
-                user.active == 0 && tr.find('.activated').find('.yes').remove();
+
+                var activateBtn = tr.find('.activated').find('.no');
+                var deactivateBtn = tr.find('.activated').find('.yes');
+                activateBtn.attr('href', activateBtn.attr('href') + user.id);
+                deactivateBtn.attr('href', activateBtn.attr('href') + user.id);
+
+                var refreshActivateButtons = function() {
+                    if (user.active == 1) {
+                        activateBtn.hide();
+                        deactivateBtn.show();
+                    } else {
+                        deactivateBtn.hide();
+                        activateBtn.show();
+                    }
+                };
+
+                var toggleActiveUser = function (ev) {
+                    user.active ^= 1;
+                    refreshActivateButtons();
+                    console.log('onClick', ev, user);
+                    return false;
+                };
+
+                refreshActivateButtons();
+                activateBtn.on('click', toggleActiveUser);
+                deactivateBtn.on('click', toggleActiveUser);
 
                 tr.fadeIn('fast');
             };
@@ -38,8 +62,8 @@
 
 {block name=main}
     <h1>{__('Title', 'Users')}</h1>
-    <form action="{$SERVER_URL}/api.php?s=user" method="get" data-module="users">
-        <input type="submit" value="{__('Generic', 'Load')}"/>
+    <form action="{$SERVER_URL}/api.php?s=user" method="GET" data-module="users">
+        <input type="submit" value="{__('Generic', 'Load')}" class="btn btn-default"/>
     </form>
     <div class="panel panel-default">
         <table class="table table-striped table-bordered">
@@ -51,8 +75,8 @@
             <tr id="user-model" style="display:none">
                 <td class="id">id</td>
                 <td class="activated">
-                    <span class="glyphicon glyphicon-ok yes" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></span>
+                    <a href="{$SERVER_URL}/api.php?s=user&id=" data-method="UPDATE" class="glyphicon glyphicon-ok yes" aria-hidden="true"></a>
+                    <a href="{$SERVER_URL}/api.php?s=user&id=" data-method="UPDATE" class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></a>
                 </td>
                 <td class="name">name</td>
             </tr>
