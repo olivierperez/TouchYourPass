@@ -18,6 +18,26 @@ class UserApi extends Api {
      */
     function onPost() {
         $data = json_decode($_POST['data']);
+        if ($data->id) {
+            return $this->update($data);
+        } else {
+            return $this->create($data);
+        }
+    }
+
+    function onGet() {
+        return $this->userService->findAll();
+    }
+
+    function onDelete() {
+        return $this->notImplemented();
+    }
+
+    private function update($data) {
+        return $this->userService->update($data);
+    }
+
+    private function create($data) {
         if (empty($data->name) || empty($data->passphrase) || $data->passphrase == 'd96b7e56fa181a09ef450fbe5db9ef957a93ee7380df25fed8670e97ce6ce632f5da8c567fb59f8afd13e50492626270498bd593cf1f52d63b40744cdb11e58f') {
             return $this->badRequest();
         }
@@ -28,13 +48,5 @@ class UserApi extends Api {
         } else {
             return $this->conflict(__('Register','TheAccountAlreadyExists'));
         }
-    }
-
-    function onGet() {
-        return $this->userService->findAll();
-    }
-
-    function onDelete() {
-        return $this->notImplemented();
     }
 }

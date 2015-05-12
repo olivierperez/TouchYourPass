@@ -39,4 +39,9 @@ class UserRepository extends Repository {
         return $stmt->fetchAll();
     }
 
+    public function update($user) {
+            $stmt = $this->prepare('UPDATE `' . $this->prefix('user') . '` SET active=:active WHERE id=:id');
+            return $stmt->execute(array('active' => $user->active, 'id' => $user->id));
+    }
+
 }

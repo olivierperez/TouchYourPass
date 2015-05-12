@@ -32,6 +32,6 @@ class LoginApi extends Api {
     }
 
     function onDelete() {
-        return $this->notImplemented();
+        return $this->badRequest();
     }
 }

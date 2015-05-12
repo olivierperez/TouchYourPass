@@ -46,10 +46,10 @@
 
                     var target = $(ev.target);
 
-                    var method = target.attr('data-method') || 'UPDATE';
-                    var url = target.attr('href') || 'UPDATE';
+                    var method = target.attr('data-method') || 'POST';
+                    var url = target.attr('href');
                     var formData = new FormData();
-                    formData.append('user', JSON.stringify(user));
+                    formData.append('data', JSON.stringify(user));
 
                     // Send data
                     var xhr = new XMLHttpRequest();
@@ -99,8 +99,8 @@
             <tr id="user-model" style="display:none">
                 <td class="id">id</td>
                 <td class="activated">
-                    <a href="{$SERVER_URL}/api.php?s=user" data-method="UPDATE" class="glyphicon glyphicon-ok yes" aria-hidden="true"></a>
-                    <a href="{$SERVER_URL}/api.php?s=user" data-method="UPDATE" class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></a>
+                    <a href="{$SERVER_URL}/api.php?s=user" data-method="POST" class="glyphicon glyphicon-ok yes" aria-hidden="true"></a>
+                    <a href="{$SERVER_URL}/api.php?s=user" data-method="POST" class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></a>
                 </td>
                 <td class="name">name</td>
             </tr>

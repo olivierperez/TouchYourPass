@@ -54,4 +54,12 @@ class UserService {
         return $this->userRepository->findAll();
     }
 
+    public function update($user) {
+        if ($this->userRepository->update($user)) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
+
 }
