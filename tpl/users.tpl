@@ -2,7 +2,7 @@
 
 {block name=head}
     <script type="text/javascript">
-        define('users', function () {
+        define('users', ['ajaxify'], function (ajaxify) {
 
             var onSuccess = function (response) {
                 console.log('success', response);
@@ -16,19 +16,21 @@
             };
 
             var displayUser = function (user) {
+                // Clone the model
                 var trModel = $('#user-model');
                 var tr = trModel.clone().attr('id', '');
                 trModel.before(tr);
 
+                // Apply attributes
                 tr.find('.id').html(user.id);
                 tr.find('.name').html(user.name);
 
+                // Apply attributes on links
                 var activateBtn = tr.find('.activated').find('.no');
                 var deactivateBtn = tr.find('.activated').find('.yes');
-                activateBtn.attr('href', activateBtn.attr('href') + user.id);
-                deactivateBtn.attr('href', activateBtn.attr('href') + user.id);
 
-                var refreshActivateButtons = function() {
+                // Hanlde clicks on buttons
+                var refreshActivateButtons = function () {
                     if (user.active == 1) {
                         activateBtn.hide();
                         deactivateBtn.show();
@@ -40,8 +42,30 @@
 
                 var toggleActiveUser = function (ev) {
                     user.active ^= 1;
-                    refreshActivateButtons();
-                    console.log('onClick', ev, user);
+//                    console.log('onClick', ev, ev.target, user);
+
+                    var target = $(ev.target);
+
+                    var method = target.attr('data-method') || 'UPDATE';
+                    var url = target.attr('href') || 'UPDATE';
+                    var formData = new FormData();
+                    formData.append('user', JSON.stringify(user));
+
+                    // Send data
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(method, url, true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status >= 200 && xhr.status < 300) {
+                                user = JSON.parse(xhr.response);
+                                refreshActivateButtons();
+                            } else {
+                                console.log('fail', xhr.status, JSON.parse(xhr.response))
+                            }
+                        }
+                    };
+                    xhr.send(formData);
+
                     return false;
                 };
 
@@ -75,8 +99,8 @@
             <tr id="user-model" style="display:none">
                 <td class="id">id</td>
                 <td class="activated">
-                    <a href="{$SERVER_URL}/api.php?s=user&id=" data-method="UPDATE" class="glyphicon glyphicon-ok yes" aria-hidden="true"></a>
-                    <a href="{$SERVER_URL}/api.php?s=user&id=" data-method="UPDATE" class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></a>
+                    <a href="{$SERVER_URL}/api.php?s=user" data-method="UPDATE" class="glyphicon glyphicon-ok yes" aria-hidden="true"></a>
+                    <a href="{$SERVER_URL}/api.php?s=user" data-method="UPDATE" class="glyphicon glyphicon-ban-circle no" aria-hidden="true"></a>
                 </td>
                 <td class="name">name</td>
             </tr>

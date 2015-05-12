@@ -129,7 +129,7 @@ define('ajaxify', ['passphrase'], function (passphrase) {
             var a = $(this);
 
             var url = a.attr('href');
-            var method = a.attr('data-method');
+            var method = a.attr('data-method') || 'GET';
 
             // Send data
             var xhr = new XMLHttpRequest();
