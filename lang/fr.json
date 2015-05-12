@@ -3,6 +3,8 @@
     "TouchYourPass": "TouchYourPass",
     "Keystore": "Trousseau de clés",
     "Register": "Inscription",
+    "Log-in": "Connexion",
+    "Logout": "Déconnexion",
     "Users": "Utilisateurs"
   },
   "Generic": {
@@ -11,7 +13,7 @@
     "No": "Non",
     "Name": "Nom",
     "Passphrase": "Phrase de passe",
-    "Log-in": "Connection",
+    "Log-in": "Connexion",
     "Login": "Login",
     "Web site": "Site web",
     "Add": "Ajouter",

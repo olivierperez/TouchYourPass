@@ -19,3 +19,11 @@ function smarty_modifier_html($html) {
 function smarty_modifier_resource($link) {
     return Utils::serverUrl() . $link;
 }
+
+function smarty_function_cond($params, Smarty_Internal_Template $template) {
+    $if =  $params['if'];
+
+    return $if ?
+        (isset($params['then']) ? $params['then'] : '') :
+        (isset($params['else']) ? $params['else'] : '');
+}

@@ -63,6 +63,33 @@
             </button>
             <a class="navbar-brand" href="{$SERVER_URL}">{$APPLICATION_NAME|html}</a>
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {if $loggedIn}
+                    <li>
+                        <a href="{$SERVER_URL}/index.php/logout">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            {__('Title', 'Logout')}
+                        </a>
+                    </li>
+                {else}
+                    <li class="{cond if=$currentPage=='register' then='active'}">
+                        <a href="{$SERVER_URL}/index.php/register">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            {__('Title', 'Register')}
+                        </a>
+                    </li>
+                    <li class="{cond if=$currentPage=='login' then='active'}">
+                        <a href="{$SERVER_URL}/index.php/">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            {__('Title', 'Log-in')}
+                        </a>
+                    </li>
+                {/if}
+            </ul>
+        </div>
     </div>
     <!-- /.container-fluid -->
 </nav>

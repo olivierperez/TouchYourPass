@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group text-center">
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">{__('Generic', 'Create')}</button>
                     </div>
 
