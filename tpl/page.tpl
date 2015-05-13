@@ -49,7 +49,8 @@
     </script>
     {block name=head}{/block}
 <body>
-
+{$hideNavBar = $hideNavBar|default:false}
+{if !$hideNavBar}
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -93,6 +94,7 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+{/if}
 
 <main class="container" role="main">
 

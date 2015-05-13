@@ -7,18 +7,20 @@ define('ajaxify', ['passphrase'], function (passphrase) {
 
     var ajaxifyForms = function () {
         $('form').on('submit', function (event) {
-            // Stop submitting form
-            event.preventDefault();
-            event.stopPropagation();
-
             var form = this;
-
-            // Load the module
             var moduleName = $(form).attr('data-module');
-            require([moduleName], function (module) {
-                module || console.log('Module not found', moduleName);
-                module && submitForm(module, form);
-            });
+
+            if (moduleName) {
+                // Stop submitting form
+                event.preventDefault();
+                event.stopPropagation();
+
+                // Load the module
+                require([moduleName], function (module) {
+                    module || console.log('Module not found', moduleName);
+                    module && submitForm(module, form);
+                });
+            }
         });
     };
 

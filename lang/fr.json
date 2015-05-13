@@ -5,7 +5,8 @@
     "Register": "Inscription",
     "Log-in": "Connexion",
     "Logout": "Déconnexion",
-    "Users": "Utilisateurs"
+    "Users": "Utilisateurs",
+    "Installation": "Installation"
   },
   "Generic": {
     "id": "id",
@@ -44,6 +45,17 @@
   "Register": {
     "RegisterSucceededWaitForAdminValidateYourAccount": "Vous êtes inscrit, vous pourrez utiliser l'application quand l'administrateur aura validé votre compte.",
     "TheAccountAlreadyExists": "Ce compte existe déjà."
+  },
+  "Installation": {
+    "Install": "Installer",
+    "Database": "Base de données",
+    "DbConnectionString": "Chaîne de connection",
+    "DbUser": "Utilisateur",
+    "DbPassword": "Mot de passe",
+    "Security": "Sécurité",
+    "Salt": "Sel",
+    "General": "Général",
+    "AllowRegister": "Autoriser l'inscription"
   },
   "Error": {
     "Even Sherlock Holmes can not find the page you are looking for. You should go far away...": "Même Sherlock Holmes ne peut trouver la page que vous recherchez. Vous devries partir loin..."

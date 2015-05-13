@@ -5,6 +5,7 @@ use TouchYourPass\api\EntryApi;
 use TouchYourPass\api\GroupApi;
 use TouchYourPass\api\LoginApi;
 use TouchYourPass\api\UserApi;
+use TouchYourPass\api\InstallApi;
 
 require 'inc/init.php';
 
@@ -43,6 +44,9 @@ switch ($_GET['s']) {
         break;
     case 'login' :
         $api = new LoginApi();
+        break;
+    case 'install':
+        $api = new InstallApi();
         break;
     default:
         http_response_code(500);
