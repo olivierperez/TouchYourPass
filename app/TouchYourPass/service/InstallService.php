@@ -1,7 +1,7 @@
 <?php
-namespace TouchYourPass\api;
+namespace TouchYourPass\service;
 
-class InstallApi extends Api {
+class InstallService {
 
     private $fields = array(
         'Database configuration' =>
@@ -23,24 +23,7 @@ class InstallApi extends Api {
     function __construct() {
     }
 
-    function onPost() {
-        $data = json_decode($_POST['data']);
-        $this->fields['Database configuration']['DB_CONNECTIONSTRING']['value'] = $data->dbConnectionString;
-        $this->fields['Database configuration']['DB_USER']['value'] = $data->dbUser;
-        $this->fields['Database configuration']['DB_PASSWORD']['value'] = $data->dbPassword;
-
-        $this->fields['Passphrase']['PASSPHRASE_SALT']['value'] = $data->salt;
-
-        $this->fields['Allow visitors to register']['ALLOW_REGISTER']['value'] = !!$data->allowRegister;
-
+    public function getDefaultFields() {
         return $this->fields;
-    }
-
-    function onGet() {
-        return $this->badRequest();
-    }
-
-    function onDelete() {
-        return $this->badRequest();
     }
 }

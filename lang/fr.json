@@ -58,7 +58,8 @@
     "Security": "Sécurité",
     "Salt": "Sel",
     "General": "Général",
-    "AllowRegister": "Autoriser l'inscription"
+    "AllowRegister": "Autoriser l'inscription",
+    "Ended": "Installation terminée, rendez-vous sur <a href=\"%s\">l'accueil</a> pour continuer"
   },
   "Error": {
     "Even Sherlock Holmes can not find the page you are looking for. You should go far away...": "Même Sherlock Holmes ne peut trouver la page que vous recherchez. Vous devries partir loin..."

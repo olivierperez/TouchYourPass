@@ -6,17 +6,26 @@
 
             var onSuccess = function (response) {
                 console.log('success', response);
-                for (var x in response) {
-                    displayUser(response[x]);
-                }
+                $('#result').html(response.msg)
+                        .fadeIn('fast')
+                        .addClass('alert-success')
+                        .removeClass('alert-danger');
             };
 
             var onFail = function (status, response) {
                 console.log('fail', response);
+                $('#result').html(response.msg)
+                        .fadeIn('fast')
+                        .addClass('alert-danger')
+                        .removeClass('alert-success');
             };
 
             var handleElement = function (element) {
-                return element.value;
+                if (element.type == 'checkbox') {
+                    return element.checked ? element.value : '';
+                } else {
+                    return element.value;
+                }
             };
 
             return {
@@ -32,14 +41,14 @@
     <h1>{__('Title', 'Installation')}</h1>
     <div class="row">
         <div class="col-md-12">
-            <form action="{$SERVER_URL}/api.php?s=install" method="POST" data-module="install">
+            <form action="" method="POST" data-module="install">
 
                 <fieldset>
                     <legend>{__('Installation', 'Database')}</legend>
                     <div class="form-group">
                         <div class="input-group">
                             <label for="dbConnectionString" class="input-group-addon">{__('Installation', 'DbConnectionString')}</label>
-                            <input type="text" class="form-control" id="dbConnectionString" name="dbConnectionString" autofocus>
+                            <input type="text" class="form-control" id="dbConnectionString" name="dbConnectionString" value="mysql:host=HOST;dbname=SCHEMA;port=3306" autofocus>
                         </div>
                     </div>
 
@@ -81,9 +90,11 @@
                     </div>
                 </fieldset>
 
-                <div class="text-center">
+                <div class="text-center form-group">
                     <button type="submit" class="btn btn-primary">{__('Installation', 'Install')}</button>
                 </div>
+
+                <div id="result" class="alert" style="display:none"></div>
 
             </form>
         </div>
