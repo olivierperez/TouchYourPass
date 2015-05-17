@@ -20,7 +20,7 @@ class Utils {
         $dirname = $dirname === '\\' ? '' : $dirname;
         $dirname = str_replace('/admin', '', $dirname);
         $server_name = $_SERVER['SERVER_NAME'] . $port . $dirname;
-        $full = $server_name . $path;
+        $full = $server_name . '/' . $path;
 
         return $scheme . '://' .  preg_replace('#//+#', '/', $full);
     }

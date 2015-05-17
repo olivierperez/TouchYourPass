@@ -17,8 +17,12 @@ main.container {
     border-color: #603404;
     padding-left: 20px;
     padding-right: 20px;
+    color: #E0E0E0;
 }
 
+.well a {
+    color: #000000;
+}
 /* Forms */
 textarea {
     resize: both;

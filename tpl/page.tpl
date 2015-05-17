@@ -50,6 +50,7 @@
     {block name=head}{/block}
 <body>
 {$hideNavBar = $hideNavBar|default:false}
+{$currentPage = $currentPage|default:''}
 {if !$hideNavBar}
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -70,20 +71,22 @@
             <ul class="nav navbar-nav navbar-right">
                 {if $loggedIn}
                     <li>
-                        <a href="{$SERVER_URL}/index.php/logout">
+                        <a href="{'logout'|page}">
                             <span class="glyphicon glyphicon-log-out"></span>
                             {__('Title', 'Logout')}
                         </a>
                     </li>
                 {else}
-                    <li class="{cond if=$currentPage=='register' then='active'}">
-                        <a href="{$SERVER_URL}/index.php/register">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            {__('Title', 'Register')}
-                        </a>
-                    </li>
+                    {if $ALLOW_REGISTER}
+                        <li class="{cond if=$currentPage=='register' then='active'}">
+                            <a href="{'register'|page}">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                {__('Title', 'Register')}
+                            </a>
+                        </li>
+                    {/if}
                     <li class="{cond if=$currentPage=='login' then='active'}">
-                        <a href="{$SERVER_URL}/index.php/login">
+                        <a href="{'login'|page}">
                             <span class="glyphicon glyphicon-log-in"></span>
                             {__('Title', 'Log-in')}
                         </a>
@@ -102,7 +105,7 @@
     {block name=main}{/block}
 
     <hr/>
-    <footer class="text-right">© Olivier Perez - 2015</footer>
+    <footer class="text-right">© <a href="https://github.com/olivierperez/">Olivier Perez</a> - 2015</footer>
 
 </main>
 
