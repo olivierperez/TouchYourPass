@@ -1,3 +1,8 @@
+@font-face {
+    font-family: FortuneCity;
+    src: url(../font/FortuneCity.ttf);
+}
+
 body {
     background-color: #926B42;
 }
@@ -10,6 +15,15 @@ nav.navbar {
 main.container {
     background-color: #C2A687;
     box-shadow: 1px 1px 4px 0 #603404;
+}
+
+h1 {
+    font-family: FortuneCity, Arial, sans-serif;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 1);
+}
+
+h2, .navbar-brand {
+    font-family: FortuneCity, Arial, sans-serif;
 }
 
 .well {
