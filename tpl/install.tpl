@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <label for="dbUser" class="input-group-addon">{__('Installation', 'DbUser')}</label>
-                            <input type="text" class="form-control" id="dbUser" name="dbUser">
+                            <input type="text" class="form-control" id="dbUser" name="dbUser" value="root">
                         </div>
                     </div>
 

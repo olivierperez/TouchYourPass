@@ -27,7 +27,7 @@ class InstallService {
 
     public function install($data) {
         // Check values are present
-        if (empty($data->dbConnectionString) ||empty($data->dbUser) ||empty($data->salt)) {
+        if (empty($data->dbConnectionString) || empty($data->dbUser) || empty($data->salt)) {
             return $this->error('MISING_VALUES');
         }
 
@@ -37,6 +37,26 @@ class InstallService {
             return $this->error('CANT_CONNECT_TO_DATABASE');
         }
 
+        // Create database schema
+        $this->createDatabaseSchema($connect);
+
+        // Write configuration to conf.php file
+        $this->writeConfiguration($data);
+
+        return $this->ok();
+    }
+
+    function connectTo($connectionString, $user, $password) {
+        $pdo = new \PDO($connectionString, $user, $password);
+        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
+        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        return $pdo;
+    }
+
+    /**
+     * @param $data
+     */
+    function writeConfiguration($data) {
         $fields = $this->fields;
 
         $fields['Database configuration']['DB_CONNECTIONSTRING']['value'] = $data->dbConnectionString;
@@ -66,27 +86,47 @@ class InstallService {
         }
 
         $this->writeToFile($content);
-
-        return array('status'=> 'OK', 'msg' => __f('Installation', 'Ended', Utils::serverUrl()));
-    }
-
-    public function connectTo($connectionString, $user, $password) {
-        // TODO
-        return null;
     }
 
     /**
      * @param $content
      */
-    private function writeToFile($content) {
+    function writeToFile($content) {
         file_put_contents(CONF_FILENAME, $content);
+    }
+
+    /**
+     * Execute SQL installation scripts.
+     *
+     * @param \PDO $connect
+     */
+    function createDatabaseSchema($connect) {
+        $dir = opendir(ROOT_DIR . '/install/');
+        while ($dir && ($file = readdir($dir)) !== false) {
+            if ($file !== '.' && $file !== '..') {
+                $connect->exec(file_get_contents(ROOT_DIR . '/install/' . $file));
+            }
+        }
+    }
+
+    /**
+     * @return array
+     */
+    function ok() {
+        return array(
+            'status' => 'OK',
+            'msg' => __f('Installation', 'Ended', Utils::serverUrl())
+        );
     }
 
     /**
      * @param $msg
      * @return array
      */
-    private function error($msg) {
-        return array('status' => 'error', 'code' => $msg);
+    function error($msg) {
+        return array(
+            'status' => 'ERROR',
+            'code' => $msg
+        );
     }
 }

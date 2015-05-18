@@ -22,7 +22,7 @@ class InstallServiceUnitTest extends AbstractTestCase {
         $result = $service->install($data);
 
         // then
-        $this->assertEquals(array('status' => 'error', 'code' => 'CANT_CONNECT_TO_DATABASE'), $result, "Installation should return error if it can't connect to database.");
+        $this->assertEquals(array('status' => 'ERROR', 'code' => 'CANT_CONNECT_TO_DATABASE'), $result, 'Installation should return error if it can\'t connect to database.');
     }
 
     /**
@@ -42,9 +42,30 @@ class InstallServiceUnitTest extends AbstractTestCase {
         $missingSalt = $service->install($this->buildData('connectionstring', 'user', 'pwd', '', 'on'));
 
         // then
-        $this->assertEquals(array('status' => 'error', 'code' => 'MISING_VALUES'), $missingConnectionString);
-        $this->assertEquals(array('status' => 'error', 'code' => 'MISING_VALUES'), $missingDbUser);
-        $this->assertEquals(array('status' => 'error', 'code' => 'MISING_VALUES'), $missingSalt);
+        $this->assertEquals(array('status' => 'ERROR', 'code' => 'MISING_VALUES'), $missingConnectionString);
+        $this->assertEquals(array('status' => 'ERROR', 'code' => 'MISING_VALUES'), $missingDbUser);
+        $this->assertEquals(array('status' => 'ERROR', 'code' => 'MISING_VALUES'), $missingSalt);
+    }
+
+    /**
+     * @testt
+     */
+    public function should_write_to_file_when_everything_is_checked() {
+        // given
+        $service = $this->getMockBuilder('\\TouchYourPass\\service\\InstallService')
+            ->setMethods(array('connectTo', 'createDatabaseSchema', 'writeConfiguration', 'ok'))
+            ->getMock();
+
+        // stub
+        $service->expects($this->once())->method('connectTo')->willReturn(true);
+        $service->expects($this->once())->method('createDatabaseSchema');
+        $service->expects($this->once())->method('writeConfiguration');
+        $service->expects($this->once())->method('ok');
+
+        // when
+        $service->install($this->buildData('connectionstring', 'user', 'pwd', 'salt', 'on'));
+
+        // then
     }
 
     /**
