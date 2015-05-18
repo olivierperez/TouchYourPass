@@ -2,7 +2,7 @@
 
 {block name=head}
     <script type="text/javascript">
-        define('install', function (ajaxify) {
+        define('install', function () {
 
             var onSuccess = function (response) {
                 console.log('success', response);
@@ -84,7 +84,7 @@
                             <label for="allowRegister" class="input-group-addon">{__('Installation', 'AllowRegister')}</label>
 
                             <div class="form-control">
-                                <input type="checkbox" id="allowRegister" name="allowRegister">
+                                <input type="checkbox" id="allowRegister" name="allowRegister" checked>
                             </div>
                         </div>
                     </div>
