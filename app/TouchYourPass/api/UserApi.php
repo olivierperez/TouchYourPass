@@ -18,7 +18,7 @@ class UserApi extends Api {
      */
     function onPost() {
         $data = json_decode($_POST['data']);
-        if ($data->id) {
+        if (isset($data->id)) {
             return $this->update($data);
         } else {
             return $this->create($data);
