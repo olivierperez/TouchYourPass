@@ -55,6 +55,7 @@
     "DbConnectionString": "Chaîne de connection",
     "DbUser": "Utilisateur",
     "DbPassword": "Mot de passe",
+    "DbPrefix": "Préfixe des tables",
     "Security": "Sécurité",
     "Salt": "Sel",
     "General": "Général",

@@ -65,6 +65,13 @@
                             <input type="password" class="form-control" id="dbPassword" name="dbPassword">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="dbPrefix" class="input-group-addon">{__('Installation', 'DbPrefix')}</label>
+                            <input type="text" class="form-control" id="dbPrefix" name="dbPrefix" value="typ_">
+                        </div>
+                    </div>
                 </fieldset>
 
                 <fieldset>

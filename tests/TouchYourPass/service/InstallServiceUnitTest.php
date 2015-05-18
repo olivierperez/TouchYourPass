@@ -13,7 +13,7 @@ class InstallServiceUnitTest extends AbstractTestCase {
         $service = $this->getMockBuilder('\\TouchYourPass\\service\\InstallService')
             ->setMethods(array('connectTo'))
             ->getMock();
-        $data = $this->buildData('connectionstring', 'user', 'pwd', 'salt', 'on');
+        $data = $this->buildData('connectionstring', 'user', 'pwd', 'prefix', 'salt', 'on');
 
         // stub
         $service->expects($this->once())->method('connectTo')->willReturn(null);
@@ -37,9 +37,9 @@ class InstallServiceUnitTest extends AbstractTestCase {
         // stub
 
         // when
-        $missingConnectionString = $service->install($this->buildData('', 'user', 'pwd', 'salt', 'on'));
-        $missingDbUser = $service->install($this->buildData('connectionstring', '', 'pwd', 'salt', 'on'));
-        $missingSalt = $service->install($this->buildData('connectionstring', 'user', 'pwd', '', 'on'));
+        $missingConnectionString = $service->install($this->buildData('', 'user', 'pwd', 'prefix', 'salt', 'on'));
+        $missingDbUser = $service->install($this->buildData('connectionstring', '', 'pwd', 'prefix', 'salt', 'on'));
+        $missingSalt = $service->install($this->buildData('connectionstring', 'user', 'pwd', 'prefix', '', 'on'));
 
         // then
         $this->assertEquals(array('status' => 'ERROR', 'code' => 'MISING_VALUES'), $missingConnectionString);
@@ -63,7 +63,7 @@ class InstallServiceUnitTest extends AbstractTestCase {
         $service->expects($this->once())->method('ok');
 
         // when
-        $service->install($this->buildData('connectionstring', 'user', 'pwd', 'salt', 'on'));
+        $service->install($this->buildData('connectionstring', 'user', 'pwd', 'prefix', 'salt', 'on'));
 
         // then
     }
@@ -72,15 +72,17 @@ class InstallServiceUnitTest extends AbstractTestCase {
      * @param string $dbConnectionString
      * @param string $dbUser
      * @param string $dbPassword
+     * @param string $dbPrefix
      * @param string $salt
      * @param string $allowRegister
      * @return \stdClass
      */
-    private function buildData($dbConnectionString, $dbUser, $dbPassword, $salt, $allowRegister) {
+    private function buildData($dbConnectionString, $dbUser, $dbPassword, $dbPrefix, $salt, $allowRegister) {
         $data = new \stdClass();
         $data->dbConnectionString = $dbConnectionString;
         $data->dbUser = $dbUser;
         $data->dbPassword = $dbPassword;
+        $data->dbPrefix = $dbPrefix;
         $data->salt = $salt;
         $data->allowRegister = $allowRegister;
         return $data;

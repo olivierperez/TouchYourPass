@@ -10,7 +10,8 @@ class InstallService {
             array(
                 'DB_CONNECTIONSTRING' => array('type' => 'String', 'default' => 'mysql:host=HOST;dbname=SCHEMA;port=3306'),
                 'DB_USER' => array('type' => 'String', 'default' => 'root'),
-                'DB_PASSWORD' => array('type' => 'String', 'default' => 'root')
+                'DB_PASSWORD' => array('type' => 'String', 'default' => 'root'),
+                'DB_TABLE_PREFIX' => array('type' => 'String', 'default' => 'typ_')
             ),
         'Passphrase' =>
             array(
@@ -62,6 +63,7 @@ class InstallService {
         $fields['Database configuration']['DB_CONNECTIONSTRING']['value'] = $data->dbConnectionString;
         $fields['Database configuration']['DB_USER']['value'] = $data->dbUser;
         $fields['Database configuration']['DB_PASSWORD']['value'] = $data->dbPassword;
+        $fields['Database configuration']['DB_TABLE_PREFIX']['value'] = $data->dbPrefix;
 
         $fields['Passphrase']['PASSPHRASE_SALT']['value'] = $data->salt;
 
