@@ -26,6 +26,17 @@ class InstallService {
     }
 
     public function install($data) {
+        // Check values are present
+        if (empty($data->dbConnectionString) ||empty($data->dbUser) ||empty($data->salt)) {
+            return $this->error('MISING_VALUES');
+        }
+
+        // Connect to database
+        $connect = $this->connectTo($data->dbConnectionString, $data->dbUser, $data->dbPassword);
+        if (!$connect) {
+            return $this->error('CANT_CONNECT_TO_DATABASE');
+        }
+
         $fields = $this->fields;
 
         $fields['Database configuration']['DB_CONNECTIONSTRING']['value'] = $data->dbConnectionString;
@@ -54,8 +65,28 @@ class InstallService {
             $content .= "\n";
         }
 
-        //file_put_contents(CONF_FILENAME, $content);
+        $this->writeToFile($content);
 
-        return array('msg' => __f('Installation', 'Ended', Utils::serverUrl()));
+        return array('status'=> 'OK', 'msg' => __f('Installation', 'Ended', Utils::serverUrl()));
+    }
+
+    public function connectTo($connectionString, $user, $password) {
+        // TODO
+        return null;
+    }
+
+    /**
+     * @param $content
+     */
+    private function writeToFile($content) {
+        file_put_contents(CONF_FILENAME, $content);
+    }
+
+    /**
+     * @param $msg
+     * @return array
+     */
+    private function error($msg) {
+        return array('status' => 'error', 'code' => $msg);
     }
 }
