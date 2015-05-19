@@ -1,0 +1,6 @@
+<Files admin.php>
+    AuthUserFile "/var/www/touchyourpass/.htpasswd"
+    AuthType Basic
+    AuthName "Please authenticate"
+    Require valid-user
+</Files>
