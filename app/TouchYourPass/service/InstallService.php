@@ -29,7 +29,7 @@ class InstallService {
     public function install($data) {
         // Check values are present
         if (empty($data->dbConnectionString) || empty($data->dbUser) || empty($data->salt)) {
-            return $this->error('MISING_VALUES');
+            return $this->error('MISSING_VALUES');
         }
 
         // Connect to database
@@ -48,10 +48,14 @@ class InstallService {
     }
 
     function connectTo($connectionString, $user, $password) {
-        $pdo = new \PDO($connectionString, $user, $password);
-        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        return $pdo;
+        try {
+            $pdo = @new \PDO($connectionString, $user, $password);
+            $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch(\Exception $e) {
+            return null;
+        }
     }
 
     /**

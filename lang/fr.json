@@ -26,7 +26,8 @@
     "Title": "Titre",
     "Group": "Groupe",
     "Active": "Activé",
-    "Load": "Charger"
+    "Load": "Charger",
+    "ASTERISK": "<span class=\"required\">*</span>"
   },
   "Home": {
     "Passphrases": "Phrases de passe",
@@ -60,7 +61,9 @@
     "Salt": "Sel",
     "General": "Général",
     "AllowRegister": "Autoriser l'inscription",
-    "Ended": "Installation terminée, rendez-vous sur <a href=\"%s\">l'accueil</a> pour continuer"
+    "Ended": "Installation terminée, rendez-vous sur <a href=\"%s\">l'accueil</a> pour continuer",
+    "MISSING_VALUES": "Remplissez les champs obligatoires",
+    "CANT_CONNECT_TO_DATABASE": "Impossible de se connecter à la base de données"
   },
   "Error": {
     "Even Sherlock Holmes can not find the page you are looking for. You should go far away...": "Même Sherlock Holmes ne peut trouver la page que vous recherchez. Vous devries partir loin..."

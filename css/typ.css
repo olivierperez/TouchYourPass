@@ -37,6 +37,7 @@ h2, .navbar-brand {
 .well a {
     color: #000000;
 }
+
 /* Forms */
 textarea {
     resize: both;
@@ -54,6 +55,10 @@ textarea.noResize {
     border-color: #603404;
     outline: 0 none;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(96, 52, 4, 0.6);
+}
+
+.required {
+    color: red;
 }
 
 /* Lists */

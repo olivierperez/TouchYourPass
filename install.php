@@ -27,10 +27,19 @@ if (empty($_POST)) {
 } else {
 
     $installService = new InstallService();
-
     $data = json_decode($_POST['data']);
+
+    // Execute the installation
     $result = $installService->install($data);
 
-    echo json_encode($result);
+    // Handle result then build response
+    if ($result['status'] !== 'OK') {
+        http_response_code(400);
+        $response = array('msg' => __('Installation', $result['code']));
+    } else {
+        $response = array('msg' => $result['msg']);
+    }
+
+    echo json_encode($response);
 
 }

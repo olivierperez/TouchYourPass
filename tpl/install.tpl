@@ -47,14 +47,14 @@
                     <legend>{__('Installation', 'Database')}</legend>
                     <div class="form-group">
                         <div class="input-group">
-                            <label for="dbConnectionString" class="input-group-addon">{__('Installation', 'DbConnectionString')}</label>
+                            <label for="dbConnectionString" class="input-group-addon">{__('Generic', 'ASTERISK')} {__('Installation', 'DbConnectionString')}</label>
                             <input type="text" class="form-control" id="dbConnectionString" name="dbConnectionString" value="mysql:host=HOST;dbname=SCHEMA;port=3306" autofocus>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
-                            <label for="dbUser" class="input-group-addon">{__('Installation', 'DbUser')}</label>
+                            <label for="dbUser" class="input-group-addon">{__('Generic', 'ASTERISK')} {__('Installation', 'DbUser')}</label>
                             <input type="text" class="form-control" id="dbUser" name="dbUser" value="root">
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <legend>{__('Installation', 'Security')}</legend>
                     <div class="form-group">
                         <div class="input-group">
-                            <label for="salt" class="input-group-addon">{__('Installation', 'Salt')}</label>
+                            <label for="salt" class="input-group-addon">{__('Generic', 'ASTERISK')} {__('Installation', 'Salt')}</label>
                             <input type="text" class="form-control" id="salt" name="salt">
                         </div>
                     </div>
