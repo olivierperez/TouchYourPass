@@ -12,14 +12,14 @@ class EntryServiceUnitTest extends AbstractTestCase {
         // given
         $mockUserRepository = $this->mockEntryRepository();
         $service = new EntryService($mockUserRepository);
-        $user = new \stdClass();
-        $user->id = 666;
+        $_SESSION['user'] = new \stdClass();
+        $_SESSION['user']->id = 666;
 
         // stub
-        $mockUserRepository->expects($this->once())->method('findAllByUserId')->with($user->id);
+        $mockUserRepository->expects($this->once())->method('findAllByUserId')->with(666);
 
         // when
-        $service->findAllByUser($user);
+        $service->findByConnectedUser();
 
         // then
 

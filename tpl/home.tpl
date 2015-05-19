@@ -6,29 +6,34 @@
 {block name=main}
     <h1>{$APPLICATION_NAME}</h1>
     <div class="row">
-        <div class="col-md-offset-3 col-md-6 well">
-            <div>
-                <form action="{$SERVER_URL}/api.php?s=user" method="POST" data-module="login">
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label for="name" class="input-group-addon">{__('Generic', 'Name')}</label>
-                            <input type="text" class="form-control" id="name" name="name" autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label for="passphrase" class="input-group-addon">{__('Generic', 'Passphrase')}</label>
-                            <input type="password" class="form-control" id="passphrase" name="passphrase">
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">{__('Generic', 'Log-in')}</button>
-                    </div>
-
-                </form>
+        <div class="col-md-4">
+            <h2><span class="glyphicon glyphicon-sunglasses"></span> {__('Home', 'Passphrases')}</h2>
+            {__('Home', 'PassphrasesExplanation')}
+        </div>
+        <div class="col-md-4">
+            <h2><span class="glyphicon glyphicon-alert"></span> {__('Home', 'IsItSafe')}</h2>
+            {__('Home', 'IsItSafeExplanation')}
+        </div>
+        <div class="col-md-4">
+            <h2><span class="glyphicon glyphicon-eye-open"></span> {__('Home', 'OpenSourceProject')}</h2>
+            {__('Home', 'OpenSourceProjectExplanation')}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <h2><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h2>
+                {if $CONF_ALLOW_REGISTER}
+                    {__f('Home', 'RegisterExplanation', 'register'|page)}
+                {else}
+                    {__('Home', 'RegisterNotAllowedExplanation')}
+                {/if}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <h2><span class="glyphicon glyphicon-log-in"></span> {__('Title', 'Log-in')}</h2>
+                {__f('Home', 'LogInExplanation', 'login'|page)}
             </div>
         </div>
     </div>

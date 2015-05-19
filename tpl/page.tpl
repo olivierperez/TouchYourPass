@@ -31,12 +31,12 @@
                 sjcl: "{'/bower_components/sjcl/sjcl'|resource}",
                 jsSHA: "{'/bower_components/jsSHA/src/sha'|resource}",
                 zeroclipboard: "{'/bower_components/zeroclipboard/dist/ZeroClipboard'|resource}",
-                password: "{'/js/password'|resource}",
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
                 group: "{'/js/group'|resource}",
                 login: "{'/js/login'|resource}",
-                ajaxify: "{'/js/ajaxify'|resource}"
+                ajaxify: "{'/js/ajaxify'|resource}",
+                passphrase: "{'/js/passphrase'|resource}"
             }
         });
 
@@ -49,7 +49,9 @@
     </script>
     {block name=head}{/block}
 <body>
-
+{$hideNavBar = $hideNavBar|default:false}
+{$currentPage = $currentPage|default:''}
+{if !$hideNavBar}
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,11 +63,41 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span class="navbar-brand">{$APPLICATION_NAME|html}</span>
+            <a class="navbar-brand" href="{$SERVER_URL}">{$APPLICATION_NAME|html}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {if $loggedIn}
+                    <li>
+                        <a href="{'logout'|page}">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            {__('Title', 'Logout')}
+                        </a>
+                    </li>
+                {else}
+                    {if $ALLOW_REGISTER}
+                        <li class="{cond if=$currentPage=='register' then='active'}">
+                            <a href="{'register'|page}">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                {__('Title', 'Register')}
+                            </a>
+                        </li>
+                    {/if}
+                    <li class="{cond if=$currentPage=='login' then='active'}">
+                        <a href="{'login'|page}">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            {__('Title', 'Log-in')}
+                        </a>
+                    </li>
+                {/if}
+            </ul>
         </div>
     </div>
     <!-- /.container-fluid -->
 </nav>
+{/if}
 
 <main class="container" role="main">
 
@@ -73,7 +105,7 @@
     {block name=main}{/block}
 
     <hr/>
-    <footer class="text-right">© Olivier Perez - 2015</footer>
+    <footer class="text-right">© <a href="https://github.com/olivierperez/">Olivier Perez</a> - 2015</footer>
 
 </main>
 

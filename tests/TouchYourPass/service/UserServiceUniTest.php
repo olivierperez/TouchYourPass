@@ -35,6 +35,7 @@ class UserServiceUniTest extends AbstractTestCase {
         $service = new UserService($userRepository);
         $foundUser = new \stdClass();
         $foundUser->passphrase = self::AZE_HASHED_WITH_SALT;
+        $foundUser->active = 1;
 
         // stub
         $userRepository->expects($this->once())->method('findByName')->willReturn($foundUser);
@@ -53,17 +54,18 @@ class UserServiceUniTest extends AbstractTestCase {
         // given
         $userRepository = $this->mockUserRepository();
         $service = new UserService($userRepository);
-        $dbUser = new \stdClass();
-        $dbUser->passphrase = self::AZE_HASHED_WITH_SALT;
+        $foundUser = new \stdClass();
+        $foundUser->passphrase = self::AZE_HASHED_WITH_SALT;
+        $foundUser->active = 1;
 
         // stub
-        $userRepository->expects($this->once())->method('findByName')->willReturn($dbUser);
+        $userRepository->expects($this->once())->method('findByName')->willReturn($foundUser);
 
         // when
         $authenticated = $service->authenticate(null, 'aze');
 
         // then
-        $this->assertSame($dbUser, $authenticated);
+        $this->assertSame($foundUser, $authenticated);
     }
 
     /**

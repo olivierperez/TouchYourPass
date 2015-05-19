@@ -2,21 +2,43 @@
   "Title": {
     "TouchYourPass": "TouchYourPass",
     "Keystore": "Trousseau de clés",
-    "PasswordHashGeneration": "Génération du password-hash"
+    "Register": "Inscription",
+    "Log-in": "Connexion",
+    "Logout": "Déconnexion",
+    "Users": "Utilisateurs",
+    "Installation": "Installation"
   },
   "Generic": {
+    "id": "id",
+    "Yes": "Oui",
+    "No": "Non",
     "Name": "Nom",
     "Passphrase": "Phrase de passe",
-    "Log-in": "Connection",
+    "Log-in": "Connexion",
     "Login": "Login",
     "Web site": "Site web",
     "Add": "Ajouter",
     "Copy": "Copier",
+    "Create": "Créer",
     "Delete": "Supprimer",
     "Generate": "Générer",
     "Hash": "Hash",
     "Title": "Titre",
-    "Group": "Groupe"
+    "Group": "Groupe",
+    "Active": "Activé",
+    "Load": "Charger",
+    "ASTERISK": "<span class=\"required\">*</span>"
+  },
+  "Home": {
+    "Passphrases": "Phrases de passe",
+    "PassphrasesExplanation": "Dans TouchYourPass il existe 2 phrases de passe que vous devez retenir : <ul><li>La première est à utiliser avec votre login, <strong>elle sert à vous connecter&nbsp;</strong>;</li><li>La seconde sert à déchiffrer <strong>sur votre ordinateur</strong> les mots de passes que vous avez enregistré.</li></ul>",
+    "IsItSafe": "Est-ce sûr ?",
+    "IsItSafeExplanation": "<p>Les mots de passe sont chiffrés grâce à la seconde phrase de passe, <strong>tout chiffrement/déchiffrement se fait sur votre ordinateur</strong>. Ni l'administrateur du site, ni le gouvernement, ni la NSA ne peuvent avoir accès à vos mots de passe sans cette phrase de passe.</p><p>A vous d'en choisir une suffisament longue et farfelue pour vous protéger.</p>",
+    "OpenSourceProject": "Projet open source",
+    "OpenSourceProjectExplanation": "<p>Le code source de ce site est accessible à tous, car c'est en laissant les meilleurs l'<strong>auditer</strong> et le <strong>corriger</strong> que l'on arrivera à produire le meilleur outils de gestion de mots de passe en ligne.</p><p>N'hésitez pas à y jeter un oeil et à faire vos remarques, aucune idée n'est mauvaise à partir du moment où elle est exprimée.</p>",
+    "RegisterExplanation": "<p>Une fois <a href=\"%s\">l'inscription</a> effectuée, l'adminisatrateur doit la valider avant que vous ne puissiez vous connecter.</p><p>Une fois l'inscription validée vous pourrez pleinement utiliser l'application et choisir votre seconde phrase de passe qui protègera tous vos mots de passe.</p>",
+    "RegisterNotAllowedExplanation": "<p>Les inscriptions sont fermées. Seul l'administrateur peut créer des comptes.</p>",
+    "LogInExplanation": "Rendez-vous directement vers la page de <a href=\"%s\">connextion</a>."
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"
@@ -24,8 +46,24 @@
   "Group": {
     "Default": "Défaut"
   },
-  "PasswordHash": {
-    "DontUseItFromComputerOfSomeoneElse": "Vous devriez pas utiliser ce formulaire sur l'ordinateur de quelqu'un d'autre. Peut-être qu'il/elle possède un logiciel pour mémoriser votre mot de passe."
+  "Register": {
+    "RegisterSucceededWaitForAdminValidateYourAccount": "Vous êtes inscrit, vous pourrez utiliser l'application quand l'administrateur aura validé votre compte.",
+    "TheAccountAlreadyExists": "Ce compte existe déjà."
+  },
+  "Installation": {
+    "Install": "Installer",
+    "Database": "Base de données",
+    "DbConnectionString": "Chaîne de connection",
+    "DbUser": "Utilisateur",
+    "DbPassword": "Mot de passe",
+    "DbPrefix": "Préfixe des tables",
+    "Security": "Sécurité",
+    "Salt": "Sel",
+    "General": "Général",
+    "AllowRegister": "Autoriser l'inscription",
+    "Ended": "Installation terminée, rendez-vous sur <a href=\"%s\">l'accueil</a> pour continuer",
+    "MISSING_VALUES": "Remplissez les champs obligatoires",
+    "CANT_CONNECT_TO_DATABASE": "Impossible de se connecter à la base de données"
   },
   "Error": {
     "Even Sherlock Holmes can not find the page you are looking for. You should go far away...": "Même Sherlock Holmes ne peut trouver la page que vous recherchez. Vous devries partir loin..."

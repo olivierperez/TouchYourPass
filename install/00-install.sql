@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `typ_entry` (
   `user_id` int(10) unsigned NOT NULL,
   `content` blob NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -25,14 +25,16 @@ CREATE TABLE IF NOT EXISTS `typ_entry` (
 -- Table structure for table `typ_user`
 --
 
+
 DROP TABLE IF EXISTS `typ_user`;
 CREATE TABLE IF NOT EXISTS `typ_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
-  `passphrase` varchar(128) NOT NULL,
+  `name` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `passphrase` varchar(128) CHARACTER SET latin1 NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -46,4 +48,4 @@ CREATE TABLE IF NOT EXISTS `typ_group` (
   `user_id` int(10) unsigned NOT NULL,
   `content` blob NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -12,26 +12,41 @@ class UserApi extends Api {
     }
 
     /**
-     * Connect the user.
+     * Add a user.
      *
      * @return object The object to return as JSON
      */
     function onPost() {
         $data = json_decode($_POST['data']);
-        $authenticated = $this->userService->authenticate($data->name, $data->passphrase);
-
-        if ($authenticated) {
-            return array('name' => $authenticated->name);
+        if (isset($data->id)) {
+            return $this->update($data);
         } else {
-            return $this->forbidden();
+            return $this->create($data);
         }
     }
 
     function onGet() {
-        return $this->badRequest();
+        return $this->userService->findAll();
     }
 
     function onDelete() {
         return $this->notImplemented();
+    }
+
+    private function update($data) {
+        return $this->userService->update($data);
+    }
+
+    private function create($data) {
+        if (empty($data->name) || empty($data->passphrase) || $data->passphrase == 'd96b7e56fa181a09ef450fbe5db9ef957a93ee7380df25fed8670e97ce6ce632f5da8c567fb59f8afd13e50492626270498bd593cf1f52d63b40744cdb11e58f') {
+            return $this->badRequest();
+        }
+        $created = $this->userService->create($data->name, $data->passphrase);
+
+        if ($created) {
+            return array('msg' => __('Register','RegisterSucceededWaitForAdminValidateYourAccount'));
+        } else {
+            return $this->conflict(__('Register','TheAccountAlreadyExists'));
+        }
     }
 }
