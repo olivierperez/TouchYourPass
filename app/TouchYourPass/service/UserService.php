@@ -14,7 +14,7 @@ class UserService {
     public function authenticate($name, $passphrase) {
         $user = $this->userRepository->findByName($name);
 
-        if ($user !== false && $user->active == 1 && $this->hash($passphrase) == $user->passphrase) {
+        if ($user !== false && $user->active == 1 && $this->verifyPassphrase($passphrase, $user->passphrase)) {
             $_SESSION['user'] = $user;
             return $user;
         }
@@ -23,8 +23,25 @@ class UserService {
         return false;
     }
 
-    private function hash($passphrase) { // TODO replace with bcrypt ?
-        return hash('sha512', $passphrase . PASSPHRASE_SALT);
+    /**
+     * Use bcrypt with cost of 20.
+     *
+     * @param string $passphrase The passphrase to hash
+     * @return bool|string Then hashed passphrase, or false
+     */
+    private function hash($passphrase) {
+        return password_hash($passphrase, PASSWORD_BCRYPT, array('cost'=>20));
+    }
+
+    /**
+     * Check if the passphrase is matching to the stored hash.
+     *
+     * @param string $passphrase The passphrase given by the user
+     * @param string $hash The hash stored in database
+     * @return bool true is the passphrase matches the hash
+     */
+    public function verifyPassphrase($passphrase, $hash) {
+        return password_verify($passphrase, $hash);
     }
 
     public function authorizedToSeeUser($userId) {

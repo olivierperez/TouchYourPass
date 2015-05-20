@@ -11,7 +11,7 @@ $smarty->caching = false;
 $smarty->assign('APPLICATION_NAME', __('Title', 'TouchYourPass'));
 $smarty->assign('SERVER_URL', Utils::serverUrl());
 $smarty->assign('SCRIPT_NAME', $_SERVER['SCRIPT_NAME']);
-$smarty->assign('CONF_ALLOW_REGISTER', @ALLOW_REGISTER);
+$smarty->assign('ALLOW_REGISTER', @ALLOW_REGISTER);
 
 function smarty_modifier_html($html) {
     return Utils::htmlEscape($html);

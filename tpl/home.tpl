@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="well well-sm">
                 <h2><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h2>
-                {if $CONF_ALLOW_REGISTER}
+                {if $ALLOW_REGISTER}
                     {__f('Home', 'RegisterExplanation', 'register'|page)}
                 {else}
                     {__('Home', 'RegisterNotAllowedExplanation')}

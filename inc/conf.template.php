@@ -6,8 +6,5 @@ const DB_PASSWORD = 'PASSWORD';
 
 const DB_TABLE_PREFIX = 'typ_';
 
-// Passphrase
-const PASSPHRASE_SALT = 'hBtjJzCpgg49RwxkSwVyJ3DzvGT57nKgrdRjK7p3R2';
-
 // Allow visitors to register
 const ALLOW_REGISTER = true;
