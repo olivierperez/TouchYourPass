@@ -4,7 +4,7 @@
 {/block}
 
 {block name=main}
-    <h1>{__('Title', 'Keystore')}</h1>
+    <h1><span class="glyphicon glyphicon-briefcase"></span> {__('Title', 'Keystore')}</h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
             <form action="{$SERVER_URL}/api.php?s=entry" method="get" data-module="keystore">
