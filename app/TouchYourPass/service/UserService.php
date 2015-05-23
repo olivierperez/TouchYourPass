@@ -30,7 +30,7 @@ class UserService {
      * @return bool|string Then hashed passphrase, or false
      */
     private function hash($passphrase) {
-        return password_hash($passphrase, PASSWORD_BCRYPT, array('cost'=>20));
+        return password_hash($passphrase, PASSWORD_BCRYPT, array('cost'=>10));
     }
 
     /**
