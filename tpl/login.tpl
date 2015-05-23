@@ -3,7 +3,7 @@
 
 {block name=head}
 <script type="text/javascript">
-    define('login', function () {
+    define('login', ['passphrase'], function (passphrase) {
 
         var onSubmit = function () {
             $('#name').closest('.form-group').removeClass('has-error');
@@ -20,10 +20,25 @@
             $('#passphrase').closest('.form-group').addClass('has-error');
         };
 
+        var handleElement = function(element) {
+            console.log(element);
+            return element.value;
+        };
+
+        var handleFormData = function (formData, values) {
+            var data = {
+                name: values.name,
+                passphrase: passphrase.hash(values.passphrase, values.name)
+            };
+            formData.append('data', JSON.stringify(data));
+        };
+
         return {
             onSubmit: onSubmit,
             onSuccess: onSuccess,
-            onFail: onFail
+            onFail: onFail,
+            handleElement: handleElement,
+            handleFormData: handleFormData
         }
     });
 </script>
