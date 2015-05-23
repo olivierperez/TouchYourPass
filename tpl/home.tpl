@@ -19,22 +19,24 @@
             {__('Home', 'OpenSourceProjectExplanation')}
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <h2><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h2>
-                {if $ALLOW_REGISTER}
-                    {__f('Home', 'RegisterExplanation', 'register'|page)}
-                {else}
-                    {__('Home', 'RegisterNotAllowedExplanation')}
-                {/if}
+    {if !$loggedIn}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well well-sm">
+                    <h2><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h2>
+                    {if $ALLOW_REGISTER}
+                        {__f('Home', 'RegisterExplanation', 'register'|page)}
+                    {else}
+                        {__('Home', 'RegisterNotAllowedExplanation')}
+                    {/if}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well well-sm">
+                    <h2><span class="glyphicon glyphicon-log-in"></span> {__('Title', 'Log-in')}</h2>
+                    {__f('Home', 'LogInExplanation', 'login'|page)}
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <h2><span class="glyphicon glyphicon-log-in"></span> {__('Title', 'Log-in')}</h2>
-                {__f('Home', 'LogInExplanation', 'login'|page)}
-            </div>
-        </div>
-    </div>
+    {/if}
 {/block}
