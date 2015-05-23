@@ -13,10 +13,6 @@ class InstallService {
                 'DB_PASSWORD' => array('type' => 'String', 'default' => 'root'),
                 'DB_TABLE_PREFIX' => array('type' => 'String', 'default' => 'typ_')
             ),
-        'Passphrase' =>
-            array(
-                'PASSPHRASE_SALT' => array('type' => 'String', 'default' => 'hBtjJzCpgg49RwxkSwVyJ3DzvGT57nKgrdRjK7p3R2')
-            ),
         'Allow visitors to register' =>
             array(
                 'ALLOW_REGISTER' => array('type' => 'bool', 'default' => true)
@@ -68,8 +64,6 @@ class InstallService {
         $fields['Database configuration']['DB_USER']['value'] = $data->dbUser;
         $fields['Database configuration']['DB_PASSWORD']['value'] = $data->dbPassword;
         $fields['Database configuration']['DB_TABLE_PREFIX']['value'] = $data->dbPrefix;
-
-        $fields['Passphrase']['PASSPHRASE_SALT']['value'] = $data->salt;
 
         $fields['Allow visitors to register']['ALLOW_REGISTER']['value'] = isset($data->allowRegister) && in_array($data->allowRegister, array('on', 'true', '1'));
 

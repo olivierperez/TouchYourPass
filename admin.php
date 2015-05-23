@@ -3,7 +3,6 @@ use TouchYourPass\Utils;
 
 require 'inc/init.php';
 
-$smarty->assign('ALLOW_REGISTER', ALLOW_REGISTER);
 $smarty->assign('loggedIn', !empty($_SESSION['user']) && !empty($_SESSION['user']->id));
 
 if (in_array($_SERVER['REQUEST_URI'], array('/admin.php'))) {

@@ -34,7 +34,6 @@
                 keystore: "{'/js/keystore'|resource}",
                 key: "{'/js/key'|resource}",
                 group: "{'/js/group'|resource}",
-                login: "{'/js/login'|resource}",
                 ajaxify: "{'/js/ajaxify'|resource}",
                 passphrase: "{'/js/passphrase'|resource}"
             }
@@ -68,12 +67,12 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 {if $loggedIn}
-                    <li>
-                        <a href="{'logout'|page}">
-                            <span class="glyphicon glyphicon-log-out"></span>
-                            {__('Title', 'Logout')}
+                    <li class="{cond if=$currentPage=='keystore' then='active'}">
+                        <a href="{'keystore'|page}">
+                            <span class="glyphicon glyphicon glyphicon glyphicon-briefcase"></span>
+                            {__('Title', 'Keystore')}
                         </a>
                     </li>
                 {else}
@@ -89,6 +88,17 @@
                         <a href="{'login'|page}">
                             <span class="glyphicon glyphicon-log-in"></span>
                             {__('Title', 'Log-in')}
+                        </a>
+                    </li>
+                {/if}
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {if $loggedIn}
+                    <li>
+                        <a href="{'logout'|page}">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            {__('Title', 'Logout')}
                         </a>
                     </li>
                 {/if}

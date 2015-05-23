@@ -7,8 +7,9 @@ define('key', ['sjcl', 'keystore'], function (sjcl, keystore) {
         keystore.addEntry(response.id, entry, true);
 
         // Reset all form fields but group
-        $('#add-entry-form').trigger('reset');
-        $('#add-entry-form').find('option[value=' + entry.group + ']').prop('selected', 'selected');
+        $('#add-entry-form')
+            .trigger('reset')
+            .find('option[value=' + entry.group + ']').prop('selected', 'selected');
     };
 
     var onFail = function (status, response) {

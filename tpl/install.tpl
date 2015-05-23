@@ -75,16 +75,6 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>{__('Installation', 'Security')}</legend>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label for="salt" class="input-group-addon">{__('Generic', 'ASTERISK')} {__('Installation', 'Salt')}</label>
-                            <input type="text" class="form-control" id="salt" name="salt">
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset>
                     <legend>{__('Installation', 'General')}</legend>
                     <div class="form-group">
                         <div class="input-group">

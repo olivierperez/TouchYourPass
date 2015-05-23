@@ -2,7 +2,7 @@
 
 {block name=head}
     <script type="text/javascript">
-        define('register', function () {
+        define('register', ['passphrase'], function (passphrase) {
 
             var onSuccess = function (response) {
                 showMessage('success', response.msg);
@@ -22,9 +22,27 @@
                 msgBlock.fadeIn('fast');
             };
 
+            var handleElement = function(element) {
+                console.log(element);
+                return element.value;
+            };
+
+            var handleFormData = function (formData, values) {
+                var data = {
+                    name: values.name,
+                    passphrase: passphrase.hash(values.passphrase, values.name)
+                };
+                console.log('data', data);
+                console.log('values.passphrase', values.passphrase);
+                console.log('values.name', values.name);
+                formData.append('data', JSON.stringify(data));
+            };
+
             return {
                 onSuccess: onSuccess,
-                onFail: onFail
+                onFail: onFail,
+                handleElement: handleElement,
+                handleFormData: handleFormData
             }
         });
     </script>
