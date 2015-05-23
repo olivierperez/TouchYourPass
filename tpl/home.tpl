@@ -19,8 +19,9 @@
             {__('Home', 'OpenSourceProjectExplanation')}
         </div>
     </div>
-    {if !$loggedIn}
-        <div class="row">
+
+    <div class="row">
+        {if !$loggedIn}
             <div class="col-md-6">
                 <div class="well well-sm">
                     <h2><span class="glyphicon glyphicon-pencil"></span> {__('Title', 'Register')}</h2>
@@ -37,6 +38,13 @@
                     {__f('Home', 'LogInExplanation', 'login'|page)}
                 </div>
             </div>
-        </div>
-    {/if}
+        {else}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="well well-sm">
+                    <h2><span class="glyphicon glyphicon-briefcase"></span> {__('Title', 'Keystore')}</h2>
+                    {__f('Home', 'KeystoreExplanation', 'keystore'|page)}
+                </div>
+            </div>
+        {/if}
+    </div>
 {/block}

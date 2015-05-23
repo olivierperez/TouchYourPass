@@ -38,7 +38,8 @@
     "OpenSourceProjectExplanation": "<p>Le code source de ce site est accessible à tous, car c'est en laissant les meilleurs l'<strong>auditer</strong> et le <strong>corriger</strong> que l'on arrivera à produire le meilleur outils de gestion de mots de passe en ligne.</p><p>N'hésitez pas à y jeter un oeil et à faire vos remarques, aucune idée n'est mauvaise à partir du moment où elle est exprimée.</p>",
     "RegisterExplanation": "<p>Une fois <a href=\"%s\">l'inscription</a> effectuée, l'adminisatrateur doit la valider avant que vous ne puissiez vous connecter.</p><p>Une fois l'inscription validée vous pourrez pleinement utiliser l'application et choisir votre seconde phrase de passe qui protègera tous vos mots de passe.</p>",
     "RegisterNotAllowedExplanation": "<p>Les inscriptions sont fermées. Seul l'administrateur peut créer des comptes.</p>",
-    "LogInExplanation": "Rendez-vous directement vers la page de <a href=\"%s\">connextion</a>."
+    "LogInExplanation": "Rendez-vous directement vers la page de <a href=\"%s\">connextion</a>.",
+    "KeystoreExplanation": "<p>Vous êtes déjà connecté, vous pouvez accéder directement à <a href=\"%s\">votre trousseau de clés</a>.</p><p>Vous pourrez ainsi accéder à tous vos mots de passes, en ajouter de nouveaux ou en supprimer.</p>"
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"
