@@ -6,20 +6,28 @@ define('ajaxify', ['passphrase'], function (passphrase) {
     //-----------------------
 
     var ajaxifyForms = function () {
-        $('form').on('submit', function (event) {
+        $('form').each(function() {
             var form = this;
             var moduleName = $(form).attr('data-module');
+            var moduleAuto = $(form).attr('data-module-auto');
 
             if (moduleName) {
-                // Stop submitting form
-                event.preventDefault();
-                event.stopPropagation();
+                $(this).on('submit', function (event) {
+                    // Stop submitting form
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                // Load the module
-                require([moduleName], function (module) {
-                    module || console.log('Module not found', moduleName);
-                    module && submitForm(module, form);
+                    // Load the module
+                    require([moduleName], function (module) {
+                        module || console.log('Module not found', moduleName);
+                        module && submitForm(module, form);
+                    });
                 });
+            }
+
+            if (moduleAuto == "auto") {
+                console.log('autosubmit');
+                $(this).submit();
             }
         });
     };
