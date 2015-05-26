@@ -1,7 +1,7 @@
 # Touch Your Pass
 
 ## What is that?
-**Touch Your Pass** is a PHP passwords manager in which the adminisatrator/host can't see the user's passwords.
+**Touch Your Pass** is a PHP passwords manager in which the administrator/host can't see the user's passwords.
 
 ### Is it safe?
 1. The authentication passwords are salted and hashed before storing them.
