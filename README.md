@@ -1,7 +1,7 @@
 # Touch Your Pass
 
 ## What is that?
-**Touch Your Pass** is a PHP passwords manager in which the adminisatrator/host can't see the user's passwords.
+**Touch Your Pass** is a PHP passwords manager in which the administrator/host can't see the user's passwords.
 
 ### Is it safe?
 1. The authentication passwords are salted and hashed before storing them.
@@ -10,7 +10,9 @@
 4. The **source code is open**, if someone find a vulnerability he can fix it and propose the fix.
 
 ## How to install
-* Copy/paste the files
+* Retrieve dependencies
+	* composer install
+	* bower install
 * Create a database schema
 * Go to: http://yourhost/install.php
     * Fill the form and submit it

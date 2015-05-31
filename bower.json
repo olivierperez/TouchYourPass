@@ -21,6 +21,7 @@
     "jsSHA": "Caligatio/jsSHA#~1.6.0",
     "requirejs": "~2.1.17",
     "zeroclipboard": "~2.2.0",
-    "sjcl": "bitwiseshiftleft/sjcl#~1.0.2"
+    "sjcl": "bitwiseshiftleft/sjcl#~1.0.2",
+    "download": "rndme/download"
   }
 }

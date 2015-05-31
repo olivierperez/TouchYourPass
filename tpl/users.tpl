@@ -86,7 +86,7 @@
 
 {block name=main}
     <h1>{__('Title', 'Users')}</h1>
-    <form action="{$SERVER_URL}/api.php?s=user" method="GET" data-module="users">
+    <form action="{$SERVER_URL}/api.php?s=user" method="GET" data-module="users" data-module-auto="auto">
         <input type="submit" value="{__('Generic', 'Load')}" class="btn btn-default"/>
     </form>
     <div class="panel panel-default">
