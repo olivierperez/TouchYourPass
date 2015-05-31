@@ -7,6 +7,7 @@ require ROOT_DIR . '/inc/const.php';
 require ROOT_DIR . '/inc/conf.php';
 require ROOT_DIR . '/inc/i18n.php';
 require ROOT_DIR . '/vendor/o80/i18n/src/shortcuts.php';
+require ROOT_DIR . '/vendor/ircmaxell/password-compat/lib/password.php';
 require ROOT_DIR . '/inc/smarty.php';
 
 //session_start();
