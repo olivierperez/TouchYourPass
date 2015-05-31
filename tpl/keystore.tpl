@@ -17,8 +17,11 @@
 
                 <div class="text-center">
                     <input type="submit" class="ajax btn btn-default" value="{__('Entry', 'Load entries')}"/>
+                    <a id="export" href="export" style="display:none" class="btn btn-default">Export</a>
                 </div>
             </form>
+
+
         </div>
     </div>
     <div class="row">

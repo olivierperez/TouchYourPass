@@ -131,29 +131,33 @@ define('ajaxify', ['passphrase'], function (passphrase) {
         });
     };
 
-    var ajaxifyLink = function (element, onSuccess, onFail) {
+    var ajaxifyLink = function (element, handlers) {
+        element.off('click');
         element.on('click', function (event) {
             // Stop submitting form
             event.preventDefault();
             event.stopPropagation();
-            var a = $(this);
 
-            var url = a.attr('href');
-            var method = a.attr('data-method') || 'GET';
+            if (!handlers.submit || handlers.submit()) {
+                var a = $(this);
 
-            // Send data
-            var xhr = new XMLHttpRequest();
-            xhr.open(method, url, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        onSuccess(JSON.parse(xhr.response));
-                    } else {
-                        onFail(xhr.status, JSON.parse(xhr.response));
+                var url = a.attr('href');
+                var method = a.attr('data-method') || 'GET';
+
+                // Send data
+                var xhr = new XMLHttpRequest();
+                xhr.open(method, url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            handlers.success(JSON.parse(xhr.response));
+                        } else {
+                            handlers.fail(xhr.status, JSON.parse(xhr.response));
+                        }
                     }
-                }
-            };
-            xhr.send(null);
+                };
+                xhr.send(null);
+            }
         });
     };
 

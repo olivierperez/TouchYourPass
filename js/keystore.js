@@ -1,6 +1,6 @@
 'use strict';
 
-define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify, zeroclipboard) {
+define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (sjcl, ajaxify, zeroclipboard, download) {
 
     // Variables
 
@@ -72,7 +72,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             passphraseField.closest('.form-group').addClass('hidden');
         }
 
-        console.log('groups', groups);
+        enableExport();
 
     };
 
@@ -124,11 +124,14 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         // Bind delete button
         var deleteLink = block.find('.delete');
         deleteLink.attr('href', deleteLink.attr('href') + id);
-        ajaxify.ajaxifyLink(deleteLink, function (response) {
-            deleteLink.closest('.list-group-item').remove();
-            delete groups[entry.group || 'default'][id];
-        }, function (status, response) {
-            console.log('ajaxify failed', deleteLink, status, response);
+        ajaxify.ajaxifyLink(deleteLink, {
+            success: function (response) {
+                deleteLink.closest('.list-group-item').remove();
+                delete groups[entry.group || 'default'][id];
+            },
+            fail: function (status, response) {
+                console.log('ajaxify failed', deleteLink, status, response);
+            }
         });
 
         // Bind copy button
@@ -172,10 +175,13 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
         // Bind delete button
         var deleteLink = block.find('.delete');
         deleteLink.attr('href', deleteLink.attr('href') + id);
-        ajaxify.ajaxifyLink(deleteLink, function () {
-            deleteLink.closest('.btn-group').remove();
-        }, function (status, response) {
-            console.log('ajaxify failed', deleteLink, status, response);
+        ajaxify.ajaxifyLink(deleteLink, {
+            success: function () {
+                deleteLink.closest('.btn-group').remove();
+            },
+            fail: function (status, response) {
+                console.log('ajaxify failed', deleteLink, status, response);
+            }
         });
 
         // Add new block to HTML
@@ -231,6 +237,42 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard'], function (sjcl, ajaxify
             });
 
             $('#entries').fadeIn(200);
+        });
+    };
+
+    // Export keys
+
+    var enableExport = function () {
+        $('#export').show('fast');
+        ajaxify.ajaxifyLink($('#export'), {
+            submit: function () {
+
+                // Build export object
+
+                var exported = {};
+                for (var g in groups) {
+                    exported[g] = [];
+                    for (var e in groups[g]) {
+                        var entry = groups[g][e];
+                        delete entry.group;
+                        exported[g].push(entry);
+                    }
+                }
+
+                // Convert to JSON
+
+                var stringified = JSON.stringify(exported, function (key, value) {
+                    if (value != undefined) {
+                        return value;
+                    }
+                });
+
+                // Download
+
+                download(stringified, 'passwords.txt', 'text/plain');
+
+                return false;
+            }
         });
     };
 
