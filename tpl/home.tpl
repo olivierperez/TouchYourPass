@@ -6,6 +6,12 @@
 {block name=main}
     <h1>{$APPLICATION_NAME}</h1>
     <div class="row">
+        <div class="col-md-12">
+            <h2><span class="glyphicon glyphicon-briefcase"></span> {__('Home', 'Presentation')}</h2>
+            {__('Home', 'TouchYourPassExplanation')}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <h2><span class="glyphicon glyphicon-sunglasses"></span> {__('Home', 'Passphrases')}</h2>
             {__('Home', 'PassphrasesExplanation')}
