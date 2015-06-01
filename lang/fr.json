@@ -30,6 +30,8 @@
     "ASTERISK": "<span class=\"required\">*</span>"
   },
   "Home": {
+    "Presentation": "Présentation",
+    "TouchYourPassExplanation": "<p>Lorsque quelqu'un devine votre mot de passe pour accéder à un site, il a également accès à tous les autres sites que vous fréquentez car vous utilisez le même mot de passe partout. Vous avez alors 2 mots de passe : <ul><li>un pour les sites que vous souhaitez vraiment protéger;</li><li>un pour les sites sans importance.</li></ul>Le problème est simplement déplacé quelqu'un trouve votre mot de passe pour les sites importants il a alors accès à tous ces sites.</p><p>Mais je vous l'accorde, il est impossible de retenir un mot de passe par site sur lequel vous possédez un compte. C'est à ce moment qu'il faut s'équiper d'outils pour mémoriser tous vos mots de passe, afin d'avoir accès au bon mot de passe au bon moment.</p><p><strong>TouchYourPass</strong> vous aide à stocker tous vos mots de passe pour que vous les ayez à disposition à tout moment. En les protègeant avec une phrase de passe forte, vous vous assurerez que ni un pirate ni l'hebergeur de TouchYourPass ni personne d'autre que vous ne pourra y accéder.</p>",
     "Passphrases": "Phrases de passe",
     "PassphrasesExplanation": "Dans TouchYourPass il existe 2 phrases de passe que vous devez retenir : <ul><li>La première est à utiliser avec votre login, <strong>elle sert à vous connecter&nbsp;</strong>;</li><li>La seconde sert à déchiffrer <strong>sur votre ordinateur</strong> les mots de passes que vous avez enregistré.</li></ul>",
     "IsItSafe": "Est-ce sûr ?",
