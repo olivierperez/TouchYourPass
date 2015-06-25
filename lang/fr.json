@@ -30,16 +30,15 @@
     "ASTERISK": "<span class=\"required\">*</span>"
   },
   "Home": {
+    "Presentation": "Présentation",
+    "TouchYourPassExplanation": "<p>Lorsque quelqu'un devine votre mot de passe pour accéder à un site, il a également accès à tous les autres sites que vous fréquentez car vous utilisez le même mot de passe partout. Vous avez alors 2 mots de passe : <ul><li>un pour les sites que vous souhaitez vraiment protéger;</li><li>un pour les sites sans importance.</li></ul>Le problème est simplement déplacé quelqu'un trouve votre mot de passe pour les sites importants il a alors accès à tous ces sites.</p><p>Mais je vous l'accorde, il est impossible de retenir un mot de passe par site sur lequel vous possédez un compte. C'est à ce moment qu'il faut s'équiper d'outils pour mémoriser tous vos mots de passe, afin d'avoir accès au bon mot de passe au bon moment.</p><p><strong>TouchYourPass</strong> vous aide à stocker tous vos mots de passe pour que vous les ayez à disposition à tout moment. En les protègeant avec une phrase de passe forte, vous vous assurerez que ni un pirate ni l'hebergeur de TouchYourPass ni personne d'autre que vous ne pourra y accéder.</p>",
     "Passphrases": "Phrases de passe",
     "PassphrasesExplanation": "Dans TouchYourPass il existe 2 phrases de passe que vous devez retenir : <ul><li>La première est à utiliser avec votre login, <strong>elle sert à vous connecter&nbsp;</strong>;</li><li>La seconde sert à déchiffrer <strong>sur votre ordinateur</strong> les mots de passes que vous avez enregistré.</li></ul>",
     "IsItSafe": "Est-ce sûr ?",
     "IsItSafeExplanation": "<p>Les mots de passe sont chiffrés grâce à la seconde phrase de passe, <strong>tout chiffrement/déchiffrement se fait sur votre ordinateur</strong>. Ni l'administrateur du site, ni le gouvernement, ni la NSA ne peuvent avoir accès à vos mots de passe sans cette phrase de passe.</p><p>A vous d'en choisir une suffisament longue et farfelue pour vous protéger.</p>",
     "OpenSourceProject": "Projet open source",
     "OpenSourceProjectExplanation": "<p>Le code source de ce site est accessible à tous, car c'est en laissant les meilleurs l'<strong>auditer</strong> et le <strong>corriger</strong> que l'on arrivera à produire le meilleur outils de gestion de mots de passe en ligne.</p><p>N'hésitez pas à y jeter un oeil et à faire vos remarques, aucune idée n'est mauvaise à partir du moment où elle est exprimée.</p>",
-    "RegisterExplanation": "<p>Une fois <a href=\"%s\">l'inscription</a> effectuée, l'adminisatrateur doit la valider avant que vous ne puissiez vous connecter.</p><p>Une fois l'inscription validée vous pourrez pleinement utiliser l'application et choisir votre seconde phrase de passe qui protègera tous vos mots de passe.</p>",
-    "RegisterNotAllowedExplanation": "<p>Les inscriptions sont fermées. Seul l'administrateur peut créer des comptes.</p>",
-    "LogInExplanation": "Rendez-vous directement vers la page de <a href=\"%s\">connextion</a>.",
-    "KeystoreExplanation": "<p>Vous êtes déjà connecté, vous pouvez accéder directement à <a href=\"%s\">votre trousseau de clés</a>.</p><p>Vous pourrez ainsi accéder à tous vos mots de passes, en ajouter de nouveaux ou en supprimer.</p>"
+    "RegisterNotAllowedExplanation": "Les inscriptions sont fermées."
   },
   "Entry": {
     "Load entries": "Charger les enregistrements"

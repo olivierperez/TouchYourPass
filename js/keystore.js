@@ -63,6 +63,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (s
             }
         }
 
+        // If decryption is OK or is there is nothing to decrypt, make everything appear
         if (decryptionSuccess || (response.entries.length === 0 && response.groups.length === 0)) {
             $('#' + currentGroup + '-group').trigger('click');
             $('#add-entry').fadeIn('slow');
@@ -70,9 +71,9 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (s
             $('#entries').fadeIn('slow');
             $('#groups').fadeIn('slow');
             passphraseField.closest('.form-group').addClass('hidden');
-        }
 
-        enableExport();
+            enableExport();
+        }
 
     };
 
