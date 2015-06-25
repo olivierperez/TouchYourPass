@@ -24,7 +24,7 @@ class InstallService {
 
     public function install($data) {
         // Check values are present
-        if (empty($data->dbConnectionString) || empty($data->dbUser) || empty($data->salt)) {
+        if (empty($data->dbConnectionString) || empty($data->dbUser)) {
             return $this->error('MISSING_VALUES');
         }
 
