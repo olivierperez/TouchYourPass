@@ -1,6 +1,6 @@
 'use strict';
 
-define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (sjcl, ajaxify, zeroclipboard, download) {
+define('keystore', ['sjcl', 'ajaxify', 'download'], function (sjcl, ajaxify, download) {
 
     // Variables
 
@@ -120,6 +120,7 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (s
         block.find('.title').html(entry.title);
         block.find('.login').html(entry.login);
         block.find('.url').attr('href', url).html(url);
+        block.find('.passphrase').attr('value', entry.passphrase);
         block.find('.id').html(id);
 
         // Bind delete button
@@ -137,20 +138,11 @@ define('keystore', ['sjcl', 'ajaxify', 'zeroclipboard', 'download'], function (s
 
         // Bind copy button
         var copyBtn = block.find('.copy');
-        copyBtn.attr('data-clipboard-text', entry.passphrase);
-
-        var zeroClient = new zeroclipboard(copyBtn);
-        zeroClient.on({
-            'ready': function () {
-                console.log('zeroclipboard ready');
-            },
-            'error': function (event) {
-                console.log('zeroclipboard error', event);
-                if (event.name === 'flash-deactivated') {
-                    $('.copy').attr('disabled', 'disabled')
-                        .parent().attr('title', 'no flash');
-                }
-            }
+        copyBtn.on('click', function() {
+            block.find('.passphrase').attr('type', 'text');
+            block.find('.passphrase').select();
+            document.execCommand("copy");
+            block.find('.passphrase').attr('type', 'hidden');
         });
 
         // Add new block to HTML

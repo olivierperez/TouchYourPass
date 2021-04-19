@@ -137,6 +137,7 @@
 
                     <div class="col-md-5">
                         <a href="..." class="url" target="_blank">...</a>
+                        <input type="hidden" class="passphrase"/>
                     </div>
 
                     <div class="col-md-1">
