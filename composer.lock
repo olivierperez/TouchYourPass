@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "c1673ae8160dbdf4f46962a69232c09f",
+    "content-hash": "8b4f53a9dd3bb130e17ac9d91f803e8f",
     "packages": [
         {
             "name": "components/jquery",
@@ -46,7 +46,7 @@
             ],
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
-            "time": "2014-12-23 06:48:45"
+            "time": "2014-12-23T06:48:45+00:00"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -88,7 +88,7 @@
                 "hashing",
                 "password"
             ],
-            "time": "2014-11-20 16:49:30"
+            "time": "2014-11-20T16:49:30+00:00"
         },
         {
             "name": "o80/i18n",
@@ -134,7 +134,7 @@
                 "internationalization",
                 "php"
             ],
-            "time": "2015-05-09 22:08:09"
+            "time": "2015-05-09T22:08:09+00:00"
         },
         {
             "name": "o80/session",
@@ -178,24 +178,28 @@
             "keywords": [
                 "session"
             ],
-            "time": "2015-04-02 08:57:10"
+            "time": "2015-04-02T08:57:10+00:00"
         },
         {
             "name": "smarty/smarty",
-            "version": "v3.1.21",
+            "version": "v3.1.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smarty-php/smarty.git",
-                "reference": "1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a"
+                "reference": "e27da524f7bcd7361e3ea5cdfa99c4378a7b5419"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a",
-                "reference": "1f878e6d746ecc8ec8d00d9c75044cf7d23ad94a",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/e27da524f7bcd7361e3ea5cdfa99c4378a7b5419",
+                "reference": "e27da524f7bcd7361e3ea5cdfa99c4378a7b5419",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5 || ^6.5 || ^5.7 || ^4.8",
+                "smarty/smarty-lexer": "^3.1"
             },
             "type": "library",
             "extra": {
@@ -205,9 +209,7 @@
             },
             "autoload": {
                 "classmap": [
-                    "libs/Smarty.class.php",
-                    "libs/SmartyBC.class.php",
-                    "libs/sysplugins/smarty_security.php"
+                    "libs/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -233,7 +235,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-31 04:22:20"
+            "time": "2021-02-17T21:57:51+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -284,7 +286,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-01-19 17:03:09"
+            "time": "2015-01-19T17:03:09+00:00"
         }
     ],
     "packages-dev": [
@@ -340,7 +342,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2014-10-13 12:58:55"
+            "time": "2014-10-13T12:58:55+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -389,7 +391,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2015-02-03 12:10:50"
+            "time": "2015-02-03T12:10:50+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -449,7 +451,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-04-27 22:15:08"
+            "time": "2015-04-27T22:15:08+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -511,7 +513,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-01 07:35:26"
+            "time": "2015-06-01T07:35:26+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -558,7 +560,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2015-04-02 05:19:05"
+            "time": "2015-04-02T05:19:05+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -602,7 +604,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2014-01-30 17:20:04"
+            "time": "2014-01-30T17:20:04+00:00"
         },
         {
             "name": "phpunit/php-timer",
@@ -646,7 +648,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2013-08-02 07:42:54"
+            "time": "2013-08-02T07:42:54+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -695,7 +697,8 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-04-08 04:46:07"
+            "abandoned": true,
+            "time": "2015-04-08T04:46:07+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -767,7 +770,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-05-29 06:00:03"
+            "time": "2015-05-29T06:00:03+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -822,7 +825,8 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-05-29 05:19:18"
+            "abandoned": true,
+            "time": "2015-05-29T05:19:18+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -886,7 +890,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2015-01-29 16:28:08"
+            "time": "2015-01-29T16:28:08+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -938,7 +942,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-02-22 15:13:53"
+            "time": "2015-02-22T15:13:53+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -988,7 +992,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2015-01-01 10:01:08"
+            "time": "2015-01-01T10:01:08+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -1054,7 +1058,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2015-01-27 07:23:06"
+            "time": "2015-01-27T07:23:06+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -1105,7 +1109,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2014-10-06 09:23:50"
+            "time": "2014-10-06T09:23:50+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -1158,7 +1162,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2015-01-24 09:48:32"
+            "time": "2015-01-24T09:48:32+00:00"
         },
         {
             "name": "sebastian/version",
@@ -1193,7 +1197,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2015-02-24 06:35:25"
+            "time": "2015-02-24T06:35:25+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -1242,7 +1246,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-05-02 15:21:08"
+            "time": "2015-05-02T15:21:08+00:00"
         }
     ],
     "aliases": [],
@@ -1256,5 +1260,6 @@
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
